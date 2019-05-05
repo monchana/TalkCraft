@@ -9,7 +9,12 @@ export const LogoutButton = props => {
   return (
       <div>
         {props.user.username}
-        <button onClick={handleSubmit}>LOGOUT</button>
+        <button
+          type="button"
+          className="btn btn-primary btn-sm"
+          onClick={handleSubmit}>
+          LOGOUT
+        </button>
       </div>
   )
 }

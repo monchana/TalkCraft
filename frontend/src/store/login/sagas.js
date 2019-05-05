@@ -10,6 +10,11 @@ export function* loginAsync({data}) {
     const response = yield call(api.post, "http://localhost:8000/users/login/", data);
     yield put(actions.updateLoginState({username, ...response}))
   } catch (e) {
+    swal({
+      title: 'Login failed',
+      text: 'Username or password is incorrect',
+      button: 'Ok',
+    })
     console.error(e)
   }
 }
@@ -26,8 +31,8 @@ export function* signupAsync({data}) {
   } catch (e) {
     swal({
       title: 'Sorry...',
-      text: 'That username is already taken.',
-      button: 'Try another.',
+      text: 'That username is already taken',
+      button: 'Try another',
     })
     console.error(e)
   }

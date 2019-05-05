@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework import generics, permissions, status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework import generics
 
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
@@ -21,9 +22,10 @@ def current_user(request):
 
 class UserList(APIView):
     permission_classes = (permissions.AllowAny,)
-
+    
     def post(self, request, format=None):
         serializer = UserSerializerWithToken(data=request.data)
+        
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -17,8 +17,3 @@ export const fetchSignup = (username, password) => ({
 })
 
 export const updateSignupState = data => ({ type: ACTIONTYPES.SUCCESS_SIGNUP, data })
-
-export const toggleModal = (modalOpened) => ({
-  type: ACTIONTYPES.TOGGLE_MODAL,
-  data: { modalOpened },
-})
