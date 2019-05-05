@@ -25,19 +25,25 @@ export class LoginForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
           <input
-              type='text'
-              name='username'
+              type="text"
+              name="username"
+              placeholder="username"
               onChange={this.handleInputChange}
           />
           <input
-              type='text'
-              name='password'
+              type="password"
+              name="password"
+              placeholder="password"
               onChange={this.handleInputChange}
           />
-          <button>LOGIN</button>
-        </form>
+          <button
+             type="button"
+             className="btn btn-link btn-sm"
+             onClick={this.handleSubmit}
+             >
+             LOGIN
+         </button>
       </div>
     )
   }

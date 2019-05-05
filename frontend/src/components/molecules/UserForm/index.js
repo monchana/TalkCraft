@@ -8,10 +8,12 @@ export const UserForm = props => {
   return (
       <div>
         {props.isLoggedIn ? <LogoutButton user={props.user}/> :
-            <div>
+        <div className="container-fluid">
+          <div className="row no-gutter">
             <LoginForm/>
             <PopSignup/>
-            </div>
+          </div>
+        </div>
         }
       </div>
   )
