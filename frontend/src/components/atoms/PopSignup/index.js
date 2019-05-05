@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import SignupForm from "containers/SignupForm"
+import { MDBBtn } from "mdbreact";
+
 
 class SignupModal extends Component {
   componentDidMount() {
@@ -20,12 +22,12 @@ class SignupModal extends Component {
         id="signupModal" tabIndex="-1" role="dialog" aria-labelledby="singupModalLabel" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
-          <div className="modal-header text-center">
-            <h5 className="modal-title w-100 font-weight-bold" id="signupModalLabel">Sign Up</h5>
-            <button type="button" className="close" onClick={this.dismissModal} data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+        <div className="modal-header text-center">
+                    <h5 className="modal-title w-100 font-weight-bold" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" className="close" onClick={this.dismissModal} data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
           <div className="modal-body">
             <SignupForm/>
           </div>
@@ -51,15 +53,16 @@ export class PopSignup extends Component {
   render() {
     return (
       <div>
-          <button
-            className="btn btn-primary btn-sm"
+          <MDBBtn
+            color="primary"
+            size="sm"
             onClick={
               this.toggleModal
             }
             data-toggle="modal"
             data-target="#signupModal"
             >Sign Up
-          </button>
+          </MDBBtn>
           <SignupModal
            toggle = {this.toggleModal}
            showModal={this.state.modalOpened}
@@ -67,12 +70,4 @@ export class PopSignup extends Component {
       </div>
     )
   }
-}
-
-
-
-
-PopSignup.propTypes = {
-  toggleModal: PropTypes.func,
-  reverse: PropTypes.bool,
 }

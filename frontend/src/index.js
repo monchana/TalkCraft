@@ -10,6 +10,9 @@ import configureStore from 'store/configure'
 
 import routes from 'routes'
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const baseHistory = useRouterHistory(createHistory)({ basename: process.env.PUBLIC_PATH })

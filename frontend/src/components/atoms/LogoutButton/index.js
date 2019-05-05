@@ -8,20 +8,14 @@ export const LogoutButton = props => {
 
   return (
       <div>
-        {props.user.username}
+        <h4>{props.user.username}
         <button
           type="button"
           className="btn btn-primary btn-sm"
           onClick={handleSubmit}>
           LOGOUT
         </button>
+        </h4>
       </div>
   )
-}
-
-LogoutButton.propTypes = {
-  logout: PropTypes.func,
-  user: PropTypes.object,
-  palette: PropTypes.string,
-  reverse: PropTypes.bool,
 }

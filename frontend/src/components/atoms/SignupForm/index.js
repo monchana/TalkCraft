@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
+import { MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from "mdbreact"
+
 export class SignupForm extends Component {
   constructor(props) {
     super(props)
@@ -7,16 +9,9 @@ export class SignupForm extends Component {
       username: '',
       password: '',
       passwordCheck: '',
-      hidden: true,
-      pwdDiff: false,
+      pwdDiff: true,
       submitDisabled: true,
     }
-
-    this.toggleShow = this.toggleShow.bind(this);
-  }
-
-  toggleShow() {
-    this.setState({ hidden: !this.state.hidden });
   }
 
 
@@ -31,7 +26,6 @@ export class SignupForm extends Component {
     this.setState({
       [name]: value
     })
-
     //FIXME : Fancy way?
     //Password valid check -> enable submit
     if (event.target.name != 'username') {
@@ -59,69 +53,66 @@ export class SignupForm extends Component {
 
   render() {
     return (
-      <form>
-        <div className="modal-body mx-3">
-          <div className="md-form mb-3">
-            <i className="fas fa-user prefix grey-text"></i>
-            <label htmlFor="username">Username</label>
-            <input
-                type="text"
-                className="form-control validate"
-                id="username"
-                name="username"
-                placeholder="username"
-                onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="md-form mb-3">
-            <i className="fas fa-user prefix grey-text"></i>
-            <label htmlFor="password">Password</label>
-              <input
-                  type= {this.state.hidden ? "password":"text"}
-                  className={this.state.pwdDiff ? "form-control is-invalid" : "form-control"}
-                  id="password"
-                  name="password"
-                  placeholder="password"
-                  value = {this.state.password}
-                  onChange={this.handleInputChange}
-              />
+           <div>
+            <div className="grey-text">
+               <MDBInput
+                 label="Username"
+                 icon="user"
+                 group
+                 type="text"
+                 validate
+                 error="wrong"
+                 success="right"
+                 name="username"
+                 value={this.state.username}
+                 onInput={this.handleInputChange}
+               />
+               <MDBInput
+                 label="Password"
+                 className={this.state.pwdDiff ? "is-invalid" : "is-valid"}
+                 icon="lock"
+                 group
+                 type="password"
+                 validate
+                 error="wrong"
+                 success="right"
+                 name="password"
+                 value={this.state.password}
+                 onInput={this.handleInputChange}
+                 required
+               />
+               <MDBInput
+                 label="Confirm password"
+                 className={this.state.pwdDiff ? "is-invalid" : "is-valid"}
+                 icon=" "
+                 group
+                 type="password"
+                 validate
+                 error="wrong"
+                 success="right"
+                 name="passwordCheck"
+                 value={this.state.passwordCheck}
+                 onInput={this.handleInputChange}
+                 required
+               >
+               <div className="invalid-feedback">
+                 Check your password
+               </div>
+               <div className="valid-feedback">Looks good!</div>
+             </MDBInput>
             </div>
-            <div className="md-form mb-3">
-              <i className="fas fa-user prefix grey-text"></i>
-              <label htmlFor="passwordCheck">Confirm Password</label>
-              <input
-                  type= {this.state.hidden ? "password":"text"}
-                  className={this.state.pwdDiff ? "form-control is-invalid" : "form-control"}
-                  id="passwordCheck"
-                  name="passwordCheck"
-                  placeholder="check password"
-                  value = {this.state.passwordCheck}
-                  onChange={this.handleInputChange}
-              />
-              <div className="invalid-feedback">
-                Password is different
-              </div>
+
+
+            <div className="text-center py-4 mt-3">
+             <MDBBtn
+               color="cyan"
+               onClick={this.handleSubmit}
+               disabled={this.state.submitDisabled}>
+                 Sign Up
+             </MDBBtn>
             </div>
-          </div>
-          <div className="form-group">
-            <button type="button" className="btn btn-secondary" onClick={this.toggleShow}>
-              {this.state.hidden ? "Show password": "Hide password"}
-            </button>
-          </div>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={this.handleSubmit}
-              disabled={this.state.submitDisabled}
-            >
-            Sign Up
-            </button>
-      </form>
+           </div>
+
     )
   }
-}
-
-SignupForm.propTypes = {
-  fetchLogin: PropTypes.func,
-  reverse: PropTypes.bool,
 }

@@ -9,19 +9,12 @@ export const UserForm = props => {
       <div>
         {props.isLoggedIn ? <LogoutButton user={props.user}/> :
         <div className="container-fluid">
-          <div className="row no-gutter">
+          <form className="form-inline my-1">
             <LoginForm/>
             <PopSignup/>
-          </div>
+          </form>
         </div>
         }
       </div>
   )
-}
-
-UserForm.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  user: PropTypes.object,
-  reverse: PropTypes.bool,
-  children: PropTypes.node,
 }
