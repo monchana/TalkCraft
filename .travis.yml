@@ -1,17 +1,22 @@
-matrix:
-  inlcude:
-    - language: python
+
+      dist: xenial
+      language: python
       virtualenv:
         system_site_packages: true
-      python: 3.6
+      python: 
+        - "3.7"
       before_script:
         - cd backend/talkcraft/test
       install:
-        - pip install pytest-django
+        - pip3 install django
+        - pip3 install djangorestframework
+        - pip3 djangorestframework-jwt 
+        - pip3 django-cors-headers
+        - pip3 install pytest-django
       script:
-        - init.sh
+        - pytest
 
-    - language: node_js
+      language: node_js
       node_js:
         - v6
       before_script:
