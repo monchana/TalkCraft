@@ -1,0 +1,26 @@
+matrix:
+  inlcude:
+    - language: python
+      virtualenv:
+        system_site_packages: true
+      python: 3.6
+      before_script:
+        - cd backend/talkcraft/test
+      install:
+        - pip install pytest-django
+      script:
+        - init.sh
+
+    - language: node_js
+      node_js:
+        - v6
+      before_script:
+        - cd frontend
+      script:
+        - npm test -- --coverage && npm test
+      sudo:
+        false
+      cache:
+        yarn
+      after_success:
+        - bash <(curl -ss https://codecov.io/bash)
