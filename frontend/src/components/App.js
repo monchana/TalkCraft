@@ -17,8 +17,5 @@ const App = ({ children }) => {
   )
 }
 
-App.propTypes = {
-  children: PropTypes.any,
-}
 
 export default App
