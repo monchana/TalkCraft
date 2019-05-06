@@ -1,33 +1,33 @@
 matrix:
   include:
-    -sudo: required
-     dist: xenial
-     language: python
-     virtualenv:
-       system_site_packages: true
-     python:
-       - '3.5'
-     install:
-       - pip install django
-       - pip install djangorestframework
-       - pip install djangorestframework-jwt
-       - pip install django-cors-headers
-     before_script: cd backend/talkcraft
-     script: 
-       - bash init.sh 
-     after_script: cd ../../frontend
+    - sudo: required
+      dist: xenial
+      language: python
+      virtualenv:
+        system_site_packages: true
+      python:
+        - '3.5'
+      install:
+        - pip install django
+        - pip install djangorestframework
+        - pip install djangorestframework-jwt
+        - pip install django-cors-headers
+      before_script: cd backend/talkcraft
+      script: 
+        - bash init.sh 
+      after_script: cd ../../frontend
 
-    -language: node_js
-     node_js:
-       - v6
-     before_install: cd frontend
-     install:
-       - npm install
-       - npm install moment
-       - npm install luxon
-       - npm install date-fns
-     script:
-       - npm test -- --coverage && npm test
-     cache:
-       - yarn
+    - language: node_js
+      node_js:
+        - v6
+      before_install: cd frontend
+      install:
+        - npm install
+        - npm install moment
+        - npm install luxon
+        - npm install date-fns
+      script:
+        - npm test -- --coverage && npm test
+      cache:
+        - yarn
 
