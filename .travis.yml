@@ -5,14 +5,15 @@
         system_site_packages: true
       python: 
         - "3.7"
+        - "3.7-dev"
       before_script:
         - cd backend/talkcraft/test
       install:
-        - pip3 install django
-        - pip3 install djangorestframework
-        - pip3 djangorestframework-jwt 
-        - pip3 django-cors-headers
-        - pip3 install pytest-django
+        - pip install django
+        - pip install djangorestframework
+        - pip install djangorestframework-jwt 
+        - pip install django-cors-headers
+        - pip install pytest-django
       script:
         - pytest
 
