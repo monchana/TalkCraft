@@ -10,7 +10,7 @@ install:
   - pip install djangorestframework
   - pip install djangorestframework-jwt
   - pip install django-cors-headers
-before_script: cd backend/talkcraft/test
+before_script: cd backend/talkcraft
 script: 
   - bash init.sh 
 after_script: cd ~
