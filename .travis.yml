@@ -14,10 +14,7 @@ matrix:
     env: PYTHON=2.7
   - os: osx
     env: PYTHON=3.6
-  - os: osx
-    env: CONDA=2.7
-  - os: osx
-    env: CONDA=3.6
+ 
 before_install:
 - |
   if [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX=g++-4.8 CC=gcc-4.8; fi
@@ -43,12 +40,18 @@ before_install:
 install:
 - |
   if [ -n "$PYTHON" ]; then
-    python setup.py sdist
-    pip install --verbose dist/*.tar.gz
+    pip install django 
+    pip install djangorestframework 
+    pip install djangorestframework-jwt 
+    pip install django-cors-headers
+    pip install requests
   elif [ -n "$CONDA" ]; then
-    conda build conda.recipe
-    conda install --use-local python_example
+    conda install django
+    conda install djangorestframework
+    conda install djangorestframework-jwt
+    conda install django-cors-headers
+    conda install requests
   fi
 script:
-- pip3 install requests
-  python manage.py shell < inittest.py
+- pip install requests
+  python backend/talkcraft/manage.py shell < backend/talkcraft/test/inittest.py
