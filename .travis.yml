@@ -53,5 +53,4 @@ install:
     conda install requests
   fi
 script:
-- pip install requests
-  python backend/talkcraft/manage.py shell < backend/talkcraft/test/inittest.py
+- python backend/talkcraft/manage.py shell < backend/talkcraft/test/inittest.py
