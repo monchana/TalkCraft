@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-
-import { MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from "mdbreact"
+import { MDBCol, MDBInput, MDBBtn } from "mdbreact"
 
 export class SignupForm extends Component {
   constructor(props) {

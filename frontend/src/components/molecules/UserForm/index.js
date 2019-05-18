@@ -1,8 +1,6 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import LoginForm from "containers/LoginForm";
 import LogoutButton from "containers/LogoutButton";
-import PopSignup from "containers/PopSignup"
 
 export const UserForm = props => {
   return (
@@ -11,7 +9,7 @@ export const UserForm = props => {
         <div className="container-fluid">
           <form className="form-inline my-1">
             <LoginForm/>
-            <PopSignup/>
+
           </form>
         </div>
         }

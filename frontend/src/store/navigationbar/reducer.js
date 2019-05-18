@@ -1,21 +1,28 @@
 import { initialState } from './selectors'
-import * as ACTIONTYPES from "./actionTypes"
+import * as ACTIONTYPES from './actionTypes'
 import swal from 'sweetalert'
 
-const loginReducer = (state = initialState, action) => {
+
+const navigationBarReducer = (state = initialState, action) => {
   switch (action.type) {
   case ACTIONTYPES.SUCCESS_LOGIN:
     const user = action.data
     localStorage.setItem('user', JSON.stringify(action.data))
-    return Object.assign({}, state, {
-      isLoggedIn: true,
-      user,
+    window.location.reload()
+    .then(() => {
+      return Object.assign({}, state, {
+        isLoggedIn: true,
+        user,
+      })
     })
   case ACTIONTYPES.LOGOUT:
     localStorage.removeItem('user')
-    return Object.assign({}, state, {
-      isLoggedIn: false,
-      user: null,
+    window.location.reload()
+    .then(() => {
+      return Object.assign({}, state, {
+        isLoggedIn: false,
+        user: null,
+      })
     })
   case ACTIONTYPES.SUCCESS_SIGNUP:
      swal({
@@ -31,4 +38,4 @@ const loginReducer = (state = initialState, action) => {
   }
 }
 
-export default loginReducer
+export default navigationBarReducer
