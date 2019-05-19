@@ -1,6 +1,10 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
+import { HomePage } from 'components'
+
+// https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
 
 injectGlobal`
@@ -9,13 +13,15 @@ injectGlobal`
   }
 `
 
-const App = ({ children }) => {
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      {children}
+      <Switch>
+        <Route path="/" component={HomePage} exact />
+
+      </Switch>
     </ThemeProvider>
   )
 }
-
 
 export default App

@@ -52,13 +52,12 @@ export class LoginForm extends Component {
           />
        </div>
        <div>
-          <MDBBtn
-             outline color="primary"
-             size="sm"
-             onClick={this.handleSubmit}
-             >
-             LOGIN
-         </MDBBtn>
+           <MDBBtn
+            type="button"
+            color="cyan"
+            onClick={this.handleSubmit}>
+            Sign In
+          </MDBBtn>
       </div>
      </div>
     )
