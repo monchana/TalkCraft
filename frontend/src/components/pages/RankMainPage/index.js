@@ -1,35 +1,34 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 // import React from 'react'
 //
-// const HomePage = () => {
+// const RankMainPage = () => {
 //   return (
 //     <div>Hello World</div>
 //   )
 // }
 //
-// export default HomePage
+// export default RankMainPage
 
 
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, MainCarousel, MainListGroup, Footer
+  PageTemplate, Header, PrimaryNavigation, Footer 
 } from 'components'
 // import { NavigationBar } from 'components'
 
 import  NavigationBar   from '../../../containers/NavigationBar'
 
 
-
-const HomePage = () => {
+const RankMainPage = () => {
   return (
     <PageTemplate
       header={<NavigationBar/>}
       footer={<Footer />}
     >
-      <MainCarousel/>
+      Rank Main Page
     </PageTemplate>
   )
 }
 
-export default HomePage
+export default RankMainPage

@@ -8,7 +8,6 @@ class NavigationBarContainer extends Component {
 
 
   render() {
-
     return (
       <NavigationBar
       />
