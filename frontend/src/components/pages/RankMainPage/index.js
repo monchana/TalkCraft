@@ -13,20 +13,22 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, PrimaryNavigation, Footer 
+  PageTemplate, Header, PrimaryNavigation, Footer, RankTopUsers, RankHotUsers
 } from 'components'
 // import { NavigationBar } from 'components'
 
-import  NavigationBar   from '../../../containers/NavigationBar'
+import NavigationBar from '../../../containers/NavigationBar'
 
 
 const RankMainPage = () => {
   return (
     <PageTemplate
-      header={<NavigationBar/>}
+      header={<NavigationBar />}
       footer={<Footer />}
     >
-      Rank Main Page
+      <RankTopUsers />
+      <RankHotUsers />
+
     </PageTemplate>
   )
 }

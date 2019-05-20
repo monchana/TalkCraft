@@ -30,7 +30,7 @@ class MainCarousel extends Component {
         onSelect={this.handleSelect}
       >
         <Carousel.Item>
-        <img
+          <img
             className="d-block w-100"
             src="http://placehold.it/1000x400/"
             alt="First slide"
@@ -42,7 +42,7 @@ class MainCarousel extends Component {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-        <img
+          <img
             className="d-block w-100"
             src="http://placehold.it/1000x400/"
             alt="Second slide"
@@ -54,7 +54,7 @@ class MainCarousel extends Component {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-        <img
+          <img
             className="d-block w-100"
             src="http://placehold.it/1000x400/"
             alt="Third slide"
