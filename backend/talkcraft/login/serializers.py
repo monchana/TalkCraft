@@ -4,10 +4,24 @@ from django.contrib.auth.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    
+     # for rank
+    rank = serializers.SerializerMethodField()
+
     class Meta:
         model = User
         fields = ('username',)
+
+    # for rank
+    def get_rank(self, obj):
+        # should bring these values from posts after they are implemented
+        post_counts = 0  # should write a function to count the number of posts in yes/no and debate  and reset them every month then add them here
+        like_counts = 0  # should write function to count number of likes and rest them every month
+        report_counts = 0  # same as above
+        user_rank = post_counts/5+like_counts/50-report_counts
+        round(user_rank)
+
+        return user_rank
+
 
 # for handling sign up
 class UserSerializerWithToken(serializers.ModelSerializer):
