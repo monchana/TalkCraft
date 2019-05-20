@@ -51,12 +51,12 @@ const PageTemplate = ({
   )
 }
 
-PageTemplate.propTypes = {
-  header: PropTypes.node.isRequired,
-  hero: PropTypes.node,
-  sponsor: PropTypes.node,
-  footer: PropTypes.node.isRequired,
-  children: PropTypes.any.isRequired,
-}
+// PageTemplate.propTypes = {
+//   header: PropTypes.node.isRequired,
+//   hero: PropTypes.node,
+//   sponsor: PropTypes.node,
+//   footer: PropTypes.node.isRequired,
+//   children: PropTypes.any.isRequired,
+// }
 
 export default PageTemplate

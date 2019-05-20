@@ -42,9 +42,9 @@ const NavigationBar = (props) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="justify-content-center d-flex flex-fill">
-          <Nav.Link href="/"> Yes/No</Nav.Link>
-          <Nav.Link href="/"> Debate</Nav.Link>
-          <Nav.Link href="/"> Rank</Nav.Link>
+          <Nav.Link href="/yesno-main" active={window.location.pathname == "/yesno-main"}> Yes/No</Nav.Link>
+          <Nav.Link href="/debate-main" active={window.location.pathname == "/debate-main"}> Debate</Nav.Link>
+          <Nav.Link href="/rank-main" active={window.location.pathname == "/rank-main"}> Rank</Nav.Link>
         </Nav>
         <SignInModalButton/>
       </Navbar.Collapse>
