@@ -1,25 +1,18 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import LoginForm from "containers/LoginForm";
 import LogoutButton from "containers/LogoutButton";
-import PopSignup from "containers/PopSignup"
 
 export const UserForm = props => {
   return (
       <div>
         {props.isLoggedIn ? <LogoutButton user={props.user}/> :
-            <div>
+        <div className="container-fluid">
+          <form className="form-inline my-1">
             <LoginForm/>
-            <PopSignup/>
-            </div>
+
+          </form>
+        </div>
         }
       </div>
   )
-}
-
-UserForm.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  user: PropTypes.object,
-  reverse: PropTypes.bool,
-  children: PropTypes.node,
 }

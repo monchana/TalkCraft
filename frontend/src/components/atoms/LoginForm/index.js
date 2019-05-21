@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { MDBBtn } from "mdbreact";
 
 export class LoginForm extends Component {
   constructor(props) {
@@ -22,28 +23,43 @@ export class LoginForm extends Component {
     })
   }
 
+  handleKeyPress = event => {
+    if (event.key == "Enter") {
+      const { username, password } = this.state
+      this.props.fetchLogin(username, password)
+    }
+  }
+
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+    <div className="form-inline my-0">
+      <div className="md-form form-sm my-0">
           <input
-              type='text'
-              name='username'
+              className="form-control form-control-sm mr-sm-2 mb-0"
+              type="text"
+              name="username"
+              placeholder="username"
               onChange={this.handleInputChange}
+              onKeyPress={this.handleKeyPress}
           />
           <input
-              type='text'
-              name='password'
+              className="form-control form-control-sm mr-sm-2 mb-0"
+              type="password"
+              name="password"
+              placeholder="password"
               onChange={this.handleInputChange}
+              onKeyPress={this.handleKeyPress}
           />
-          <button>LOGIN</button>
-        </form>
+       </div>
+       <div>
+           <MDBBtn
+            type="button"
+            color="cyan"
+            onClick={this.handleSubmit}>
+            Sign In
+          </MDBBtn>
       </div>
+     </div>
     )
   }
-}
-
-LoginForm.propTypes = {
-  fetchLogin: PropTypes.func,
-  reverse: PropTypes.bool,
 }

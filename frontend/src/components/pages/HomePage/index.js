@@ -1,17 +1,35 @@
+// https://github.com/diegohaz/arc/wiki/Atomic-Design
+// import React from 'react'
+//
+// const HomePage = () => {
+//   return (
+//     <div>Hello World</div>
+//   )
+// }
+//
+// export default HomePage
+
+
+// https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
-import UserForm from '../../../containers/UserForm'
+import {
+  PageTemplate, Header, MainCarousel, MainListGroup, Footer
+} from 'components'
+// import { NavigationBar } from 'components'
 
-import { PageTemplate } from 'components'
+import  NavigationBar   from '../../../containers/NavigationBar'
 
-import { Component, PropTypes } from 'react'
+
 
 const HomePage = () => {
   return (
-      <div>
-        <UserForm/>
-    </div>
+    <PageTemplate
+      header={<NavigationBar/>}
+      footer={<Footer />}
+    >
+      <MainCarousel/>
+    </PageTemplate>
   )
 }
-
 
 export default HomePage

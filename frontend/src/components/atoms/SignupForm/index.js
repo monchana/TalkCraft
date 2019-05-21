@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { MDBCol, MDBInput, MDBBtn } from "mdbreact"
 
 export class SignupForm extends Component {
   constructor(props) {
@@ -6,19 +7,9 @@ export class SignupForm extends Component {
     this.state = {
       username: '',
       password: '',
-      hidden: true,
-    }
-
-    this.toggleShow = this.toggleShow.bind(this);
-  }
-
-  toggleShow() {
-    this.setState({ hidden: !this.state.hidden });
-  }
-
-  componentDidMount() {
-    if (this.props.password) {
-      this.setState({ password: this.props.password });
+      passwordCheck: '',
+      pwdDiff: true,
+      submitDisabled: true,
     }
   }
 
@@ -34,36 +25,93 @@ export class SignupForm extends Component {
     this.setState({
       [name]: value
     })
+    //FIXME : Fancy way?
+    //Password valid check -> enable submit
+    if (event.target.name != 'username') {
+      let passwordIsValid = (event.target.value == this.state.password)
+                              || (event.target.value == this.state.passwordCheck)
+      if(!passwordIsValid) {
+        this.setState({ pwdDiff: true, submitDisabled: true })
+      } else if(this.state.username != '') {
+        this.setState({ pwdDiff: false, submitDisabled: false })
+      }
+    }
+
+    //Username valid check -> enable submit
+    if(event.target.name == 'username') {
+      if((this.state.password != '') && (event.target.value != '') && (this.state.password == this.state.passwordCheck)){
+        this.setState({ submitDisabled: false })
+      } else {
+        this.setState({ submitDisabled: true })
+      }
+    }
   }
+
+
+
 
   render() {
     return (
-      <div>
+           <div>
+            <div className="grey-text">
+               <MDBInput
+                 label="Username"
+                 icon="user"
+                 group
+                 type="text"
+                 validate
+                 error="wrong"
+                 success="right"
+                 name="username"
+                 value={this.state.username}
+                 onInput={this.handleInputChange}
+               />
+               <MDBInput
+                 label="Password"
+                 className={this.state.pwdDiff ? "is-invalid" : "is-valid"}
+                 icon="lock"
+                 group
+                 type="password"
+                 validate
+                 error="wrong"
+                 success="right"
+                 name="password"
+                 value={this.state.password}
+                 onInput={this.handleInputChange}
+                 required
+               />
+               <MDBInput
+                 label="Confirm password"
+                 className={this.state.pwdDiff ? "is-invalid" : "is-valid"}
+                 icon=" "
+                 group
+                 type="password"
+                 validate
+                 error="wrong"
+                 success="right"
+                 name="passwordCheck"
+                 value={this.state.passwordCheck}
+                 onInput={this.handleInputChange}
+                 required
+               >
+               <div className="invalid-feedback">
+                 Check your password
+               </div>
+               <div className="valid-feedback">Looks good!</div>
+             </MDBInput>
+            </div>
 
-          <input
-              type='text'
-              name='username'
-              placeholder='username'
-              onChange={this.handleInputChange}
-          />
-          <input
-              type= {this.state.hidden ? 'password':'text'}
-              name='password'
-              placeholder='password'
-              value = {this.state.password}
-              onChange={this.handleInputChange}
-          />
-          <button onClick={this.toggleShow}>
-            {this.state.hidden ? 'Show password': 'Hide password'}
-          </button>
-          <button type='submit' onClick={this.handleSubmit}>SignUp</button>
 
-      </div>
+            <div className="text-center py-4 mt-3">
+             <MDBBtn
+               color="cyan"
+               onClick={this.handleSubmit}
+               disabled={this.state.submitDisabled}>
+                 Sign Up
+             </MDBBtn>
+            </div>
+           </div>
+
     )
   }
-}
-
-SignupForm.propTypes = {
-  fetchLogin: PropTypes.func,
-  reverse: PropTypes.bool,
 }

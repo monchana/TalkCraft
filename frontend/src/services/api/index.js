@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/API-service
 import 'whatwg-fetch'
 import { stringify } from 'query-string'
 import merge from 'lodash/merge'
@@ -14,18 +15,19 @@ export const checkStatus = (response) => {
 
 export const parseJSON = response => response.json()
 
-export const parseSettings = ({ method = 'get', data, locale, ...otherSettings } = {}) => {
+export const parseSettings = ({
+  method = 'get', data, locale, ...otherSettings
+} = {}) => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     'Accept-Language': locale,
   }
-  const settings = {
+  const settings = merge({
     body: data ? JSON.stringify(data) : undefined,
     method,
     headers,
-    ...otherSettings,
-  }
+  }, otherSettings)
   return settings
 }
 

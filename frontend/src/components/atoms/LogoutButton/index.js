@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import { Icon } from 'components'
+import { MDBBtn } from 'mdbreact'
 
 export const LogoutButton = props => {
   const handleSubmit = event => {
@@ -7,16 +9,19 @@ export const LogoutButton = props => {
   }
 
   return (
-      <div>
+      <div className="d-flex justify-content-end">
+        <h5 className="my-auto" style={{marginRight: "10px"}}>
+        <Icon icon="heart" />
+        {' '}
         {props.user.username}
-        <button onClick={handleSubmit}>LOGOUT</button>
+        {' '}
+        </h5>
+        <button
+          className="btn btn-link"
+          style={{marginTop: "14px"}}
+          onClick={handleSubmit}>
+          Log Out
+        </button>
       </div>
   )
-}
-
-LogoutButton.propTypes = {
-  logout: PropTypes.func,
-  user: PropTypes.object,
-  palette: PropTypes.string,
-  reverse: PropTypes.bool,
 }
