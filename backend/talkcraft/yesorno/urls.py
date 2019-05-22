@@ -7,6 +7,7 @@ urlpatterns = [
     #Need to make write view page
     path('yesorno/main/', views.YesOrNoMainView),
     path('yesorno/<int:pk>/', views.YesOrNoDetail.as_view()),
+    path('yesorno/write/<int:pk>/', views.YesOrNoWrite.as_view()),
     path('yesorno/test/', views.test),
 ]
 

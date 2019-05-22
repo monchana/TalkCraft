@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
-from yesorno.permissions import UserOnlyAccess, IsOwnerOrReadOnly
+from yesorno.permissions import UserOnlyAccess, IsOwnerOrReadOnly, IsOwner
 from django.contrib.auth.models import User
 from login.serializers import UserSerializerWithToken
 from django.template import Context
@@ -18,8 +18,7 @@ class YesOrNoMainView(generics.ListCreateAPIView):
     queryset = YesOrNo.objects.all()
     serializer_class = YesOrNoSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    #Is this correct format? Not able to create in main view?
 
     def show_list(self, request):
         template = get_template('YesOrNoMainList.html')
@@ -34,20 +33,32 @@ class YesOrNoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = YesOrNo.objects.all()
     serializer_class = YesOrNoSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
     def post_detail(self, serializer):
         template = get_template('YesOrNoDetail.html')
         context = Context({'User' : User.username})
         return HttpResponse(template.render(context))
 
+class YesOrNoWrite(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (
+            permissions.IsAuthenticated,
+            IsOwner
+    )
+    serializer_class = YesOrNoSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class UserCommentWrite(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
         permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly
     )
+
+    serializer_class = UserCommentSerializer
+
+    def perfrom_create(self, serializer):
+        serializer.save(author=self.request.author)
+
 @api_view(['GET'])
 @permission_classes((permissions.IsAuthenticated, ))
 def test(request):

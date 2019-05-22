@@ -3,7 +3,7 @@ from yesorno.models import YesOrNo, UserComment
 from login.serializers import UserSerializer
 
 class YesOrNoSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.ReadOnlyField(source='user.id')
+    author = serializers.ReadOnlyField(source='author.id')
     pictureA = serializers.ImageField(use_url=True)
     pictureB = serializers.ImageField(use_url=True)
     class Meta:

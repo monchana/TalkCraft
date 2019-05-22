@@ -26,9 +26,6 @@ class YesOrNo(models.Model):
     def __str__(self):
         return str(self.author) + "_" + str(self.mainTopic)
 
-    
-    
-
 #Need to do few more saving
 class UserComment(models.Model):
     user = models.OneToOneField(to='user', on_delete=models.CASCADE)   
