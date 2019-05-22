@@ -1,0 +1,4 @@
+export const IMAGEUPLOAD = 'IMAGEUPLOAD'
+export const WRITE_SUCCESS = 'WRITE_SUCCESS'
+export const WRITE_FAIL = 'WRITE_FAIL'
+export const WRITE_REQUEST = 'WRITE_REQUEST'
