@@ -13,7 +13,7 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, PrimaryNavigation, Footer
+  PageTemplate, Header, PrimaryNavigation, Footer, 
 } from 'components'
 // import { NavigationBar } from 'components'
 

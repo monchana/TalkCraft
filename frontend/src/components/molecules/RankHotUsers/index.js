@@ -21,5 +21,5 @@ const RankListUsers = ({ children, ...props }) => {
         </ListGroup>
     )
 }
-}
+
 export default RankListUsers
