@@ -1,34 +1,35 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 // import React from 'react'
 //
-// const DebateMainPage = () => {
+// const YesNoDetailPage = () => {
 //   return (
 //     <div>Hello World</div>
 //   )
 // }
 //
-// export default DebateMainPage
+// export default YesNoDetailPage
 
 
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, PrimaryNavigation, Footer, DebateList
+  PageTemplate, Header, MainCarousel, MainListGroup, Footer
 } from 'components'
 // import { NavigationBar } from 'components'
 
 import  NavigationBar   from '../../../containers/NavigationBar'
 
 
-const DebateMainPage = () => {
+
+const YesNoDetailPage = () => {
   return (
     <PageTemplate
       header={<NavigationBar/>}
       footer={<Footer />}
     >
-      <DebateList/>
+      Yes or No Detail Page
     </PageTemplate>
   )
 }
 
-export default DebateMainPage
+export default YesNoDetailPage

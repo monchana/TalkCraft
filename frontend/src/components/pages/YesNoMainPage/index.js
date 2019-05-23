@@ -13,12 +13,12 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, PrimaryNavigation, Footer, 
+  PageTemplate, Header, PrimaryNavigation, Footer
 } from 'components'
 // import { NavigationBar } from 'components'
 
 import  NavigationBar   from '../../../containers/NavigationBar'
-
+import { YesNoList } from 'components'
 
 const YesNoMainPage = () => {
   return (
@@ -26,7 +26,7 @@ const YesNoMainPage = () => {
       header={<NavigationBar/>}
       footer={<Footer />}
     >
-      Yes or No Main Page
+      <YesNoList/>
     </PageTemplate>
   )
 }

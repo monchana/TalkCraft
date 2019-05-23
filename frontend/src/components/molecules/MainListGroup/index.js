@@ -74,15 +74,15 @@ const MainListGroup = ({ ...props }) => (
         link="/yesno-main"
         title="Current Yes/No List"
       >
-        <Link href="/yesno-main" style={{fontFamily:"Geogia", color:"black"}}>Yes No 1</Link>
+        <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 1</Link>
         <br/>
-        <Link href="/yesno-main" style={{fontFamily:"Geogia", color:"black"}}>Yes No 2</Link>
+        <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 2</Link>
         <br />
-        <Link href="/yesno-main" style={{fontFamily:"Geogia", color:"black"}}>Yes No 3</Link>
+        <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 3</Link>
         <br/>
-        <Link href="/yesno-main" style={{fontFamily:"Geogia", color:"black"}}>Yes No 4</Link>
+        <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 4</Link>
         <br/>
-        <Link href="/yesno-main" style={{fontFamily:"Geogia", color:"black"}}>Yes No 5</Link>
+        <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 5</Link>
         <br/>
       </StyledFeature>
       <StyledFeature
