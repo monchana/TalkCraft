@@ -8,7 +8,7 @@ import swal from 'sweetalert'
     mainTopic, summary, timeLimit, totalTimeLimit, wordLimit, 
     textA, photoA, textB, photoB, openStatus)
 
-
+/*
 export function* postYesOrNo({data}) {
     try {
         const postId = data.postId
@@ -17,9 +17,6 @@ export function* postYesOrNo({data}) {
         const mainTopic = data.mainTopic
         const timeLimit = data.timeLimit
         const totalTimeLimit = data.totalTimeLimit
-        const wordLimit = data.wordLimit
-        const 
-
-        
+        const wordLimit = data.wordLimit 
     }
-}
+}*/

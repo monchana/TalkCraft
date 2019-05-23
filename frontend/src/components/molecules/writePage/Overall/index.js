@@ -12,8 +12,6 @@ const Wrapper = styled.div`
 
 class Overall extends React.Component {
 
-
-
   render() {
     let title
     let mainTopic

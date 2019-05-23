@@ -23,27 +23,26 @@ export const imageUpload = (photo) => ({
     data : { photo },
 })
 
-export const getDetail = (postId) => ({
-    type: ACTIONTYPES.GET_DETAIL,
+export const getPage = (postId) => ({
+    type: ACTIONTYPES.GET_PAGE,
     data : { postId },
 })
 
-export const getDetailFail = () => ({
-    type : ACTIONTYPES.GET_DETAIL_FAIL,
+export const getPageFail = () => ({
+    type : ACTIONTYPES.GET_PAGE_FAIL,
 })
 
-export const getDetailSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
+export const getPageSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
     totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus) => ({
-    type : ACTIONTYPES.GET_DETAIL_SUCCESS,
+    type : ACTIONTYPES.GET_PAGE_SUCCESS,
     //Need to change open status of the get post 
     data : {postId, author, title, mainTopic, summary, timeLimit, 
         totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
 })
 
-export const postWritePageReqeust = (postId, author, title, 
-    mainTopic, summary, timeLimit, totalTimeLimit, wordLimit, 
-    textA, photoA, textB, photoB, openStatus) => ({
-    type : ACTIONTYPES.POST_WRITE_REQUEST,
-    data : {postId, author, title, mainTopic, summary, timeLimit, 
-        totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
-})
+export const inputChange = (key, value) => {
+    return {
+        type: inputChange,
+        key, value
+    }
+}

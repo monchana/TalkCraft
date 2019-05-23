@@ -7,7 +7,7 @@ import {
 // import { NavigationBar } from 'components'
 
 import  NavigationBar   from '../../../containers/NavigationBar'
-
+/*
 const YesOrNoWritePage = () => {
   return (
     <PageTemplate
@@ -20,6 +20,6 @@ const YesOrNoWritePage = () => {
       </div>
     </PageTemplate>
   )
-}
+}*/
 
 export default YesOrNoWritePage
