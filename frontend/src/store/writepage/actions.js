@@ -39,3 +39,11 @@ export const getDetailSuccess = (postId, author, title, mainTopic, summary, time
     data : {postId, author, title, mainTopic, summary, timeLimit, 
         totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
 })
+
+export const postWritePageReqeust = (postId, author, title, 
+    mainTopic, summary, timeLimit, totalTimeLimit, wordLimit, 
+    textA, photoA, textB, photoB, openStatus) => ({
+    type : ACTIONTYPES.POST_WRITE_REQUEST,
+    data : {postId, author, title, mainTopic, summary, timeLimit, 
+        totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
+})
