@@ -62,6 +62,9 @@ const writePageReducer = (state = initialState, action) => {
       //Need to insert  open status
       //,openStatus: action.openStatus
     }
+  case ACTIONTYPES.INPUTCHANGE:
+    return state
+
 
   default:
     return state
