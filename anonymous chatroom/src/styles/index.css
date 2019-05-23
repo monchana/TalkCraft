@@ -1,0 +1,47 @@
+/* Application specific CSS */
+
+.message-container {
+  height: 100vh;
+  flex-direction: column;
+}
+
+.message-container, .message-form {
+  display: flex;
+}
+
+.message-form {
+  flex: 1;
+  max-height: 136px;
+  color: white;
+}
+
+.message-list {
+  flex: 1;
+  overflow: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.message-form .input-field input {
+  border-color: #FFFFFF;
+}
+
+.chip {
+  font-style: italic;
+}
+
+.mdi-communication-chat {
+  color: white;
+}
+
+.collection .collection-item:last-child {
+  border-bottom: 0.1em solid #DCDCDC;
+}
+
+/* -------- User Typing indicator ---------- */
+
+.typing-indicator-box {
+  flex: 1;
+  margin:0;
+  max-height:45px;
+}
