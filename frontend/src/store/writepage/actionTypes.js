@@ -2,3 +2,7 @@ export const IMAGEUPLOAD = 'IMAGEUPLOAD'
 export const WRITE_SUCCESS = 'WRITE_SUCCESS'
 export const WRITE_FAIL = 'WRITE_FAIL'
 export const WRITE_REQUEST = 'WRITE_REQUEST'
+export const GET_DETAIL = 'GET_DETAIL'
+export const GET_DETAIL_SUCCESS = 'GET_DETAIL_SUCCESS'
+export const GET_DETAIL_FAIL = 'GET_DETAIL_FAIL'
+
