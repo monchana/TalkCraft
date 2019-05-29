@@ -10,72 +10,59 @@ const Wrapper = styled.div`
   color: ${palette('grayscale', 0)};
 `
 
-class Overall extends React.Component {
-
-  render() {
-    let title
-    let mainTopic
-    let summary
-    let timeLimit
-    let totalTimeLimit
-    let wordLimit
-    let descriptionA
-    let descriptionB
-    //Need to close if t
-    const onPost = () => {
-      if (title.value && mainTopic.value && summary.value && timeLimit.value &&
-        totalTimeLimit.value && wordLimit.value && descriptionA.value && descriptionB.value){
-          this.props.onPostYesOrNo(
-            this.props.children,
-            this.props.statefunction.writepage.author, // Neeeeeed Adjustment
-            title.value,
-            mainTopic.value,
-            summary.value,
-            timeLimit.value,
-            totalTimeLimit.value,
-            wordLimit.value,
-            descriptionA.value,
-            descriptionB.value,
-            this.props.statefunction.writepage.photoA,
-            this.props.statefunction.writepage.photoB
-        )
-      }
+class Overall extends Component {
+    state = {
+        title: '', 
+        mainTopic: '', 
+        /*
+        summary: '', 
+        timeLimit: '', 
+        totalTimeLimit: '', 
+        wordLimit: '', 
+        descriptionA: '', 
+        descriptionB: ''*/
     }
-    return (
-      <div>
-      <h5>Title{' '}<input ref={node => {title= node;}} /></h5>
-      <h5>Main Topic{' '}<input ref={node => {mainTopic = node}} /></h5>
-      <h5>Summary{' '}<input ref={node => {mainTopic = node}} /></h5>
-      <h5>Time Limit{' '}<input ref={node => {score = node}} /></h5>
-      <h5>Total Time Limit{' '}<input ref={node => {score = node}} /></h5>
-      <h5>Word Limit{' '}<input ref={node => {score = node}} /></h5>
-      <h5>Description for A{' '}<input ref={node => {score = node}} /></h5>
-      <h5>Photo A{' '}<ImageUpload /></h5>
-      <h5>Description for B{' '}<input ref={node => {score = node}} /></h5>
-      <h5>Photo B{' '}<ImageUpload /></h5>
-      <h5>
-        <PostButton onClick={onPost}>
-          Post
-        </PostButton>
-      </h5>
-      <h5>
-        <CancelButton onClick={onPost}>
-          Cancel
-        </CancelButton>
-      </h5>
-    </div>
-
-    )
- 
-  }
-
-  
-}
-
-
-Overall.propTypes = {
-  reverse: PropTypes.bool,
-  children: PropTypes.node,
-}
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.onCreate(this.state);
+        this.setState({
+            title: '',
+            mainTopic: ''
+        })
+    }
+    render(){
+        return (
+            <wrapper onSubmit={this.handleSubmit}>
+                <div>
+                    Title
+                </div>
+                <input
+                    placeholder="title"
+                    value = {this.state.title}
+                    onChange = {this.handleChange}
+                />
+                <div>
+                    mainTopic
+                </div>
+                <input
+                    placeholder="mainTopic"
+                    value = {this.state.mainTopic}
+                    onChange = {this.handleChange}
+                />
+                {/* repeat for all element */}
+               
+                {/*Find what is what to replace onPost*/}
+                <PostButton type = 'submit' onClick={this.handleSubmit}>Post</PostButton>
+                <CancelButton type = 'submit' onClick={this.handleSubmit}>Cancel</CancelButton>
+            </wrapper>
+        );//end of return
+    
+    }
+} 
 
 export default Overall

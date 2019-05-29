@@ -1,6 +1,23 @@
 import { connect } from 'react-redux'
+import React, { Component } from 'react';
 import { Overall } from '../../components/pages/molecules/Overall'
-import { getDetail, writePage } from '../../store/writepage/actions'
+import { getDetail, writePage } from '../../store/writePage/actions'
+import { bindActionCreators } from 'redux';
+import * as writePageActions from '../src/store/writePage/actions';
+
+class writePageContainer extends Component {
+
+}
+
+
+export default connect(
+  (state) => ({
+    statefunction : state
+  }),
+  (dispatch) => ({
+    writePageActions: bindActionCreators(writePageActions, dispatch)
+  })
+);
 
 const mapStateToProps = (state) => { 
     return {

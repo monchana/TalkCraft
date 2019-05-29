@@ -11,11 +11,11 @@ export const writePage = (postId, author, title, mainTopic, summary, timeLimit, 
 })
 
 export const writePageFail = () => ({ 
-    type: ACTIONTYPES.WRITE_FAIL,  
+    type: ACTIONTYPES.WRITE_FAIL  
 })
 
 export const writePageSuccess = () => ({ 
-    type: ACTIONTYPES.WRITE_SUCCESS,  
+    type: ACTIONTYPES.WRITE_SUCCESS  
 })
 
 export const imageUpload = (photo) => ({
@@ -29,7 +29,7 @@ export const getPage = (postId) => ({
 })
 
 export const getPageFail = () => ({
-    type : ACTIONTYPES.GET_PAGE_FAIL,
+    type : ACTIONTYPES.GET_PAGE_FAIL
 })
 
 export const getPageSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
@@ -40,9 +40,7 @@ export const getPageSuccess = (postId, author, title, mainTopic, summary, timeLi
         totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
 })
 
-export const inputChange = (key, value) => {
-    return {
-        type: inputChange,
-        key, value
-    }
-}
+export const inputChange = (category, value) => ({
+    type: ACTIONTYPES.INPUTCHANGE,
+    data : { category, value },
+})

@@ -5,14 +5,15 @@ import swal from 'sweetalert'
 
 //TODO NEEEEEED FIXXXXXXXX
 
-const writePageReducer = (state = initialState, action) => {
-  let state = state
+const writePageReducer = (state, action) => {
+  let next = state
+  //const isLoggedIn = localStorage.has
   if (!state) {
     state = {
       author,
       isEdit: false,
       title: null,
-      isLoggedIn,
+      //isLoggedIn,
       mainTopic: null,
       summary: null,
       timeLimit: null,
@@ -28,26 +29,26 @@ const writePageReducer = (state = initialState, action) => {
   switch (action.type) {
   case ACTIONTYPES.IMAGEUPLOAD:
     return {
-        ...state,
+        ...next,
         photo : action.photo,
     }
 
   case ACTIONTYPES.WRITE_FAIL:
-    return state
+    return next
 
   case ACTIONTYPES.WRITE_REQUEST:
-    return state
+    return next
 
   case ACTIONTYPES.GET_PAGE_FAIL:
-    return state
+    return next
 
   case ACTIONTYPES.GET_PAGE:
     state.postId = action.postId
-    return state
+    return next
 
   case ACTIONTYPES.GET_PAGE_SUCCESS:
     return {
-      ...state,
+      ...next,
       author: action.author,
       title: action.title,
       mainTopic: action.mainTopic,
@@ -63,9 +64,34 @@ const writePageReducer = (state = initialState, action) => {
       //,openStatus: action.openStatus
     }
   case ACTIONTYPES.INPUTCHANGE:
-    return state
-
-
+    if (action.category=='title'){
+      return {...next, title: action.value}
+    }
+    else if (action.category=='mainTopic'){
+      return {...next, mainTopic : action.value}
+    }
+    else if (action.category=='summary'){
+      return {...next, summary : action.value}
+    }
+    else if (action.category=='timeLimit'){
+      return {...next, timeLimit : action.value}
+    }
+    else if (action.category=='totalTimeLimit'){
+      return {...next, totalTimeLimit : action.value}
+    }
+    else if (action.category=='wordLimit'){
+      return {...next, wordLimit : action.value}
+    }
+    else if (action.category=='textA'){
+      return {...next, textA : action.value}
+    }
+    else if (action.category=='textB'){
+      return {...next, textB : action.value}
+    }
+    else {
+      return next
+    }
+  
   default:
     return state
   }

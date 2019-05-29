@@ -8,7 +8,6 @@ class YesOrNo(models.Model):
         'auth.User', related_name='yesorno', on_delete=models.CASCADE)
     title = models.CharField(max_length=50, blank=True, default='')
     mainTopic = models.CharField(max_length=100, blank=True, default='')
-    live = models.BooleanField(default=False)
     startTime = models.DateTimeField()
     summary = models.TextField()
     textDescriptionA = models.TextField()
@@ -21,6 +20,7 @@ class YesOrNo(models.Model):
     pictureA = models.ImageField(blank=True, upload_to="yesorno/%Y/%m/%d")
     pictureB = models.ImageField(blank=True, upload_to="yesorno/%Y/%m/%d")
     # agreementBox =
+    openStatus = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('created', )
