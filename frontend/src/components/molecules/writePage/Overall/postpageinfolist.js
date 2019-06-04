@@ -3,12 +3,15 @@ import Postpageinfo from './postpageinfo';
 
 class PostPageInfoList extends Component {
   static defaultProps = {
-    list : [],
+    data : [],
     onRemove: () => console.warn('onRemove not defined'),
     onUpdate: () => console.warn('onUpdate not defined'),
   }
-
+  shouldComponentUpdate(nextProps, nextState) {
+      return nextProps.data !== this.props.data;
+  }
   render() {
+    console.log('render Infolist')
     const { data, onRemove, onUpdate } = this.props;
     const list = data.map(
       info => (<Postpageinfo 

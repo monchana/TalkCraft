@@ -1,82 +1,83 @@
 import { initialState } from './selectors'
-import * as ACTIONTYPES from './actionTypes'
-import swal from 'sweetalert'
+import * as writePageActions from './actions'
+import swal from './node_modules/sweetalert'
 
+const handleChange = (e) => {
+  this.setState({
+      [e.target.name]: e.target.value
+  });
+}
 
 //TODO NEEEEEED FIXXXXXXXX
 
-const writePageReducer = (state, action) => {
+const writePageReducer = (state = initialState, action) => {
   let next = state
   //const isLoggedIn = localStorage.has
-  if (!state) {
-    state = {
-      author,
-      isEdit: false,
-      title: null,
-      //isLoggedIn,
-      mainTopic: null,
-      summary: null,
-      timeLimit: null,
-      totalTimeLimit: null,
-      wordLimit: null,
-      textA: null,
-      photoA: null,
-      textB: null,
-      photoB: null,
-      openStatus: false
-    }
-  }
   switch (action.type) {
-  case ACTIONTYPES.IMAGEUPLOAD:
-    return {
+    case writePageActions.IMAGEUPLOAD:
+      return {
+          ...next,
+          photo : writePageActions.photo,
+      }
+
+    case writePageActions.WRITE_FAIL:
+      return next
+
+    case writePageActions.WRITE_REQUEST:
+      return next
+
+    case writePageActions.GET_PAGE_FAIL:
+      return next
+
+    case writePageActions.GET_PAGE:
+      state.postId = action.postId
+      return next
+
+    case writePageActions.GET_PAGE_SUCCESS:
+      return {
         ...next,
-        photo : action.photo,
-    }
+        author: writePageActions.author,
+        title: writePageActions.title,
+        mainTopic: writePageActions.mainTopic,
+        summary: writePageActions.summary,
+        timeLimit: writePageActions.timeLimit,
+        totalTimeLimit: writePageActions.totalTimeLimit,
+        wordLimit: writePageActions.wordLimit,
+        textA: writePageActions.textA,
+        photoA: writePageActions.photoA,
+        textB: writePageActions.textB,
+        photoB: writePageActions.photoB
+        //Need to insert  open status
+        //,openStatus: action.openStatus
+      }
+    //굳이 inputChange를 할 필요가 있을까? handleChange는 나중에 넣어도 되지 않을까?
+    /*case writePageActions.inputChange:
+      return {...next, {writePageActions.category : writePageActions.value} }
+      */
+    default:
+      return next
+  }
+}
 
-  case ACTIONTYPES.WRITE_FAIL:
-    return next
 
-  case ACTIONTYPES.WRITE_REQUEST:
-    return next
+export default writePageReducer
 
-  case ACTIONTYPES.GET_PAGE_FAIL:
-    return next
 
-  case ACTIONTYPES.GET_PAGE:
-    state.postId = action.postId
-    return next
-
-  case ACTIONTYPES.GET_PAGE_SUCCESS:
-    return {
-      ...next,
-      author: action.author,
-      title: action.title,
-      mainTopic: action.mainTopic,
-      summary: action.summary,
-      timeLimit: action.timeLimit,
-      totalTimeLimit: action.totalTimeLimit,
-      wordLimit: action.wordLimit,
-      textA: action.textA,
-      photoA: action.photoA,
-      textB: action.textB,
-      photoB: action.photoB
-      //Need to insert  open status
-      //,openStatus: action.openStatus
+/*
+  case writePageActions.INPUTCHANGE:
+    if (writePageActions.category=='title'){
+      return {...next, title: writePageActions.value}
     }
-  case ACTIONTYPES.INPUTCHANGE:
-    if (action.category=='title'){
-      return {...next, title: action.value}
+    else if (writePageActions.category=='mainTopic'){
+      return {...next, mainTopic : writePageActions.value}
     }
-    else if (action.category=='mainTopic'){
-      return {...next, mainTopic : action.value}
+    else if (writePageActions.category=='summary'){
+      return {...next, summary : writePageActions.value}
     }
-    else if (action.category=='summary'){
-      return {...next, summary : action.value}
+    else if (writePageActions.category=='timeLimit'){
+      return {...next, timeLimit : writePageActions.value}
     }
-    else if (action.category=='timeLimit'){
-      return {...next, timeLimit : action.value}
-    }
-    else if (action.category=='totalTimeLimit'){
+    else if (writePageActions.category=='totalTimeLimit'){
       return {...next, totalTimeLimit : action.value}
     }
     else if (action.category=='wordLimit'){
@@ -90,11 +91,4 @@ const writePageReducer = (state, action) => {
     }
     else {
       return next
-    }
-  
-  default:
-    return state
-  }
-}
-
-export default writePageReducer
+    }*/
