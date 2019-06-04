@@ -14,13 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from . import settings
 from django.urls import path, include
-from django.conf.urls import include
+from django.conf.urls.static import static 
 from rest_framework_jwt.views import obtain_jwt_token
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login.urls')),
     path('api-auto/', include('rest_framework.urls')),
-    path('token-auth/', obtain_jwt_token)
+    path('token-auth/', obtain_jwt_token),
+    path('yesorno/', include('yesorno.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

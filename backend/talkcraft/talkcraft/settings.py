@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'login.apps.LoginConfig',
     'corsheaders',
+    'yesorno',
 ]
 
 MIDDLEWARE = [
@@ -136,9 +137,19 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
+    #'localhost:3000',
+    'https://localhost:80',
+    'https://localhost:8000',
+    'https://127.0.0.1:8000'
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'talkcraft.utils.my_jwt_response_handler'
 }
+
+#Image file directory
+MEDIA_URL = '/photo/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'photo')
