@@ -5,9 +5,9 @@ class UserOnlyAccess(permissions.BasePermission):
     """
 
     def has_object_permission(self, request, view, obj):
-        return obj.user == request.user
+        return obj.author == request.user
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
+class IsOwnerOrReadOnly(permissions.BasePermission):'''
     def has_object_permission(self, request, view, obj):
         if obj.publicStatus == False:
             if request.user.is_anonymous:
@@ -23,7 +23,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return False
 
         return obj.archive == request.user.Archive
-
+'''
 class IsOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-        return obj.user == request.user
+        return obj.author == request.user
