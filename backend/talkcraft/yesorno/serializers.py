@@ -3,9 +3,9 @@ from yesorno.models import YesOrNo, UserComment
 from login.serializers import UserSerializer
 
 class YesOrNoSerializer(serializers.HyperlinkedModelSerializer):
-    author = serializers.ReadOnlyField(source='author.id')
-    pictureA = serializers.ImageField(use_url=True)
-    pictureB = serializers.ImageField(use_url=True)
+    author = serializers.ReadOnlyField(source='author.username')
+    pictureA = serializers.ImageField(required= False, allow_empty_file = True, use_url=True)
+    pictureB = serializers.ImageField(required= False, allow_empty_file = True, use_url=True)
     class Meta:
         model = YesOrNo
         fields = ('id', 'created', 'author', 'title', 'mainTopic', 
@@ -18,6 +18,8 @@ class YesOrNoSerializer(serializers.HyperlinkedModelSerializer):
 #TODO : Need to set up detail and main page
 
 class UserCommentSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.ReadOnlyField(source='user.id')
     class Meta:
         model = UserComment
+        ordering = ['-id']
         fields = ('user', 'createdTime', 'comment')

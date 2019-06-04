@@ -5,10 +5,10 @@ from django.conf.urls import url
 
 urlpatterns = [
     #Need to make write view page
-    path('yesorno/main/', views.YesOrNoMainView),
-    path('yesorno/<int:pk>/', views.YesOrNoDetail.as_view()),
-    path('yesorno/write/<int:pk>/', views.YesOrNoWrite.as_view()),
-    path('yesorno/test/', views.test),
+    #path('main/', views.YesOrNoMainView.as_view()),
+    path('write', views.YesOrNoWrite.as_view()),
+    path('detail/<int:pk>/', views.YesOrNoDetail.as_view()),
+    path('test/', views.test),
 ]
 
 urlpatterns=format_suffix_patterns(urlpatterns)

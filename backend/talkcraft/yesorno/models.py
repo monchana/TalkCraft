@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class YesOrNo(models.Model):
-    objects = models.Manager()
+   # objects = models.Manager()
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         'auth.User', related_name='yesorno', on_delete=models.CASCADE)
@@ -21,6 +22,7 @@ class YesOrNo(models.Model):
     pictureB = models.ImageField(blank=True, upload_to="yesorno/%Y/%m/%d")
     # agreementBox =
     openStatus = models.BooleanField(default=False)
+ #   post_hit = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ('created', )
@@ -30,13 +32,20 @@ class YesOrNo(models.Model):
 
     def count_YesOrNo_of(self):
         return YesOrNo.objects.filter(author=self.author).count()
-
-
+'''
+    @property
+    def update_counter(self):
+        self.post_hit = self.post_hit +1
+        self.save()
+'''
 # Need to do few more saving
 
 
 class UserComment(models.Model):
-    user = models.OneToOneField(to='user', on_delete=models.CASCADE)
+    objects = models.Manager()
+    post = models.ForeignKey(YesOrNo, related_name='comments', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     createdTime = models.DateTimeField(auto_now_add=True)
-    comment = models.TextField()
+    content = models.CharField(max_length = 200)
     id = models.AutoField(primary_key=True)
+    like = models.IntegerField()
