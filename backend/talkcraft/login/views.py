@@ -7,7 +7,9 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import generics
 
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from .models import CustomUser
+
 from django.views.decorators.csrf import csrf_exempt
 from login.serializers import UserSerializer, UserSerializerWithToken
 from login.permissions import IsOwner
@@ -22,7 +24,7 @@ def current_user(request):
 
 class UserList(APIView):
     permission_classes = (permissions.AllowAny,)
-    
+
     def post(self, request, format=None):
         serializer = UserSerializerWithToken(data=request.data)
         
@@ -31,9 +33,10 @@ class UserList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class UserDetail(generics.RetrieveAPIView):
     permission_classes = (IsOwner,)
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
 
 @api_view(['GET'])
@@ -49,7 +52,7 @@ def login_user(request):
     pwd = body['password']
 
     try: 
-        user = User.objects.get(username=username)
+        user = CustomUser.objects.get(username=username)
         
         if not user.check_password(pwd):
             return HttpResponse(status=404)
