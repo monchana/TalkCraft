@@ -1,14 +1,14 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
-from django.contrib.auth.models import User
-
+#from django.contrib.auth.models import User
+from .models import CustomUser
 
 class UserSerializer(serializers.ModelSerializer):
      # for rank
     rank = serializers.SerializerMethodField()
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('username',)
 
     # for rank
@@ -46,5 +46,5 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         return instance
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('token', 'username', 'password')

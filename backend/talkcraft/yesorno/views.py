@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
-from yesorno.permissions import UserOnlyAccess, IsOwnerOrReadOnly, IsOwner
+from yesorno.permissions import UserOnlyAccess,# IsOwnerOrReadOnly, IsOwner
 from django.contrib.auth.models import User
 from login.serializers import UserSerializerWithToken
 from django.template import Context
@@ -29,7 +29,7 @@ class YesOrNoMainView(generics.ListCreateAPIView):
 class YesOrNoDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
             permissions.IsAuthenticatedOrReadOnly,
-            IsOwnerOrReadOnly
+           # IsOwnerOrReadOnly
         )
     queryset = YesOrNo.objects.all()
     serializer_class = YesOrNoSerializer
@@ -58,7 +58,7 @@ class YesOrNoWrite(generics.ListCreateAPIView):
 class UserCommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
             permissions.IsAuthenticatedOrReadOnly,
-            IsOwnerOrReadOnly
+            #IsOwnerOrReadOnly
     )
     queryset = UserComment.objects.all()
     serializer_class = UserCommentSerializer
@@ -67,7 +67,7 @@ class UserCommentDetail(generics.RetrieveUpdateDestroyAPIView):
 class UserCommentWrite(generics.ListCreateAPIView):
     permission_classes = (
         permissions.IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly
+       # IsOwnerOrReadOnly
     )
 
     serializer_class = UserCommentSerializer

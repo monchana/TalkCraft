@@ -1,12 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from login.models import CustomUser
 
 class YesOrNo(models.Model):
-   # objects = models.Manager()
+    objects = models.Manager()
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
-        'auth.User', related_name='yesorno', on_delete=models.CASCADE)
+        CustomUser, related_name='yesorno', on_delete=models.CASCADE)
     title = models.CharField(max_length=50, blank=True, default='')
     mainTopic = models.CharField(max_length=100, blank=True, default='')
     startTime = models.DateTimeField()
@@ -36,7 +35,7 @@ class YesOrNo(models.Model):
     @property
     def update_counter(self):
         self.post_hit = self.post_hit +1
-        self.save()
+        self.savgite()
 '''
 # Need to do few more saving
 
@@ -44,8 +43,8 @@ class YesOrNo(models.Model):
 class UserComment(models.Model):
     objects = models.Manager()
     post = models.ForeignKey(YesOrNo, related_name='comments', on_delete=models.CASCADE, null=True)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     createdTime = models.DateTimeField(auto_now_add=True)
-    content = models.CharField(max_length = 200)
+    content = models.CharField(max_length = 200, blank=True, default='')
     id = models.AutoField(primary_key=True)
     like = models.IntegerField()

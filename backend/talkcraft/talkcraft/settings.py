@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'yesorno',
 ]
 
+AUTH_USER_MODEL = 'login.CustomUser'
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
