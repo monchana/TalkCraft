@@ -46,5 +46,5 @@ class UserComment(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     createdTime = models.DateTimeField(auto_now_add=True)
     content = models.CharField(max_length = 200, blank=True, default='')
-    id = models.AutoField(primary_key=True)
-    like = models.IntegerField()
+#    id = models.AutoField(primary_key=True)
+    like = models.IntegerField(null= True, default = 0)

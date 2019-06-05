@@ -62,9 +62,15 @@ class UserCommentDetail(generics.RetrieveUpdateDestroyAPIView):
     )
     queryset = UserComment.objects.all()
     serializer_class = UserCommentSerializer
+    def get(self, request, *args, **kwargs):
+        comment= self.queryset.get(id = kwargs['pk'])
+
+        serializer = UserCommentSerializer(comment)
+        return Response(serializer.data)
 
 
 class UserCommentWrite(generics.ListCreateAPIView):
+    queryset = UserComment.objects.all()
     permission_classes = (
         permissions.IsAuthenticatedOrReadOnly,
        # IsOwnerOrReadOnly
@@ -73,7 +79,7 @@ class UserCommentWrite(generics.ListCreateAPIView):
     serializer_class = UserCommentSerializer
 
     def perfrom_create(self, serializer):
-        serializer.save(user=self.request.author)
+        serializer.save(user=self.request.user)
 
 @api_view(['GET'])
 @permission_classes((permissions.IsAuthenticated, ))
