@@ -13,8 +13,6 @@ const WritePage = (props) => {
   )
 }
 
-WritePage.propTypes = {
-  reverse: PropTypes.bool,
-}
+
 
 export default WritePage

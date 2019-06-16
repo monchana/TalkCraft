@@ -22,27 +22,3 @@ export const imageUpload = (photo) => ({
     type: ACTIONTYPES.IMAGEUPLOAD,
     data : { photo },
 })
-
-export const getPage = (postId) => ({
-    type: ACTIONTYPES.GET_PAGE,
-    data : { postId },
-})
-
-export const getPageFail = () => ({
-    type : ACTIONTYPES.GET_PAGE_FAIL,
-})
-
-export const getPageSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
-    totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus) => ({
-    type : ACTIONTYPES.GET_PAGE_SUCCESS,
-    //Need to change open status of the get post 
-    data : {postId, author, title, mainTopic, summary, timeLimit, 
-        totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
-})
-
-export const inputChange = (key, value) => {
-    return {
-        type: inputChange,
-        key, value
-    }
-}
