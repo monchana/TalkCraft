@@ -319,17 +319,6 @@ body{margin-top:20px;}
     margin-right: 1px
 }
 
-.user-status.status-online {
-    border-color: #8AC16C
-}
-
-.user-status.status-busy {
-    border-color: #E07F69
-}
-
-.user-status.status-idle {
-    border-color: #FFB752
-}
 
 .tab-content.profile-edit-tab-content {
     border: 1px solid #DDD;
