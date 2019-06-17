@@ -13,7 +13,7 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, MainCarousel, MainListGroup, Footer
+  PageTemplate, Header, MainCarousel, MainListGroup, Footer , DebateVeiw
 } from 'components'
 // import { NavigationBar } from 'components'
 
@@ -25,7 +25,11 @@ const DebateDetailPage = () => {
       header={<NavigationBar/>}
       footer={<Footer />}
     >
-      Debate Detail Page
+      <DebateView />
+      <div class="col-md-4">
+        <Button variant="Debate Now" type="button" class="btn btn-default btn-lg" onClick="location.href= '/debate_start_popup_url' "> Debate Now </Button>
+      </div>
+
     </PageTemplate>
   )
 }
