@@ -29,7 +29,7 @@ const wpConfig = {
       rules: [
         { test: /\.jsx?$/, exclude: /node_modules/, use: 'happypack/loader' },
         { test: /\.(png|jpe?g|svg|woff2?|ttf|eot)$/, loader: 'url-loader?limit=8000' },
-        { test: /\.css$/,  include: /node_modules/, loaders: ['style-loader', 'css-loader'], },
+        { test: /\.css$/, use: ['style-loader', 'css-loader'], },
       ],
     },
     plugins: [

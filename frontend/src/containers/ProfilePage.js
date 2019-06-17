@@ -10,9 +10,16 @@ import NavigationBar from './NavigationBar'
 
 
 class MyPage extends React.Component {
-  componentDidMount() {
-    const userId = this.props.pageState.auth.id;
+  constructor(){
+    super()
+    this.state = {
+      username: null
+    }
   }
+ componentDidMount(){
+   const { match: { params } } = this.props;
+   this.setState({username: params.userId })
+ }
  render() {
     /*const {
 
@@ -28,8 +35,8 @@ class MyPage extends React.Component {
         footer={<Footer />}
       >
         <ProfileArea
-          
-          name="Maryam"
+
+          name={this.state.username}
           username="mary"
           Email= "default"
           userImg="img"
@@ -43,10 +50,6 @@ class MyPage extends React.Component {
     )
   }
 }
-ProfilePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  pageState: PropTypes.object.isRequired
-};
 
 function mapStateToProps(state) {
   return {

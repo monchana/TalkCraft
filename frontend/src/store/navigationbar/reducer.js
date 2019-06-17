@@ -17,7 +17,7 @@ const navigationBarReducer = (state = initialState, action) => {
     })
   case ACTIONTYPES.LOGOUT:
     localStorage.removeItem('user')
-    window.location.reload()
+    window.location.assign("http://localhost:3000")
     .then(() => {
       return Object.assign({}, state, {
         isLoggedIn: false,

@@ -94,7 +94,7 @@ class MainListGroup extends Component {
         >
           <Link href="/yesno-detail/1" style={{fontFamily:"Geogia", color:"black"}}>{this.state.yesnoList[0].title}</Link>
           <br/>
-          <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 2</Link>
+          <Link href="/yesno-detail/2" style={{fontFamily:"Geogia", color:"black"}}>{this.state.yesnoList[1].title}</Link>
           <br />
           <Link href="/yesno-detail" style={{fontFamily:"Geogia", color:"black"}}>Yes No 3</Link>
           <br/>
