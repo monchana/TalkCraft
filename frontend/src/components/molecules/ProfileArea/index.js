@@ -62,141 +62,153 @@ const ProfileArea = (props) => {
                                             <span> {props.username} </span>
                                         </div>
                                     </div>
+                                      <div class="profile-user-info">
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> Email </div>
 
-                                    <div class="profile-info-row">
-                                        <div class="profile-info-name"> Age </div>
-
-                                        <div class="profile-info-value">
-                                            <span> {props.age}</span>
+                                            <div class="profile-info-value">
+                                                <span> {props.Email} </span>
+                                            </div>
                                         </div>
-                                    </div>
+                                      </div>
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> Age </div>
 
-                                    <div class="profile-info-row">
-                                        <div class="profile-info-name"> Joined </div>
-
-                                        <div class="profile-info-value">
-                                            <span> {props.joined}</span>
+                                            <div class="profile-info-value">
+                                                <span> {props.age}</span>
+                                            </div>
                                         </div>
+
+                                        <div class="profile-info-row">
+                                            <div class="profile-info-name"> Joined </div>
+
+                                            <div class="profile-info-value">
+                                                <span> {props.joined}</span>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
-
-
-
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="space-20"></div>
+                            <div class="space-20"></div>
 
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="widget-box transparent">
-                                    <div class="widget-header widget-header-small">
-                                        <h4 class="widget-title smaller">
-                                            <i class="ace-icon fa fa-check-square-o bigger-110"></i>
-                                            Little About Me
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="widget-box transparent">
+                                        <div class="widget-header widget-header-small">
+                                            <h4 class="widget-title smaller">
+                                                <i class="ace-icon fa fa-check-square-o bigger-110"></i>
+                                                Little About Me
                                     </h4>
-                                    </div>
+                                        </div>
 
-                                    <div class="widget-body">
-                                        <div class="widget-main">
-                                            <p>
-                                                {props.LittleAboutMe}
-                                            </p>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <p>
+                                                    {props.LittleAboutMe}
+                                                </p>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div id="yesorno" class="tab-pane">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <img class="pull-left" alt="yes" src="get from user" />
-                                        <img class="pull-left" alt="no" src="get from user" />
-                                        <a class="title" href="#"> yes/or title</a>
-                                        <a href="#">more</a>
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            post time
+                        <div id="yesorno" class="tab-pane">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="profile-activity clearfix">
+                                        <div>
+                                            <img class="pull-left" alt="yes" src="get from user" />
+                                            <img class="pull-left" alt="no" src="get from user" />
+                                            <a class="title" href="#"> yes/or title</a>
+                                            <a href="#">more</a>
+                                            <div class="time">
+                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                post time
                                      </div>
-                                    </div>
+                                        </div>
 
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
+                                        <div class="tools action-buttons">
+                                            <a href="#" class="blue">
+                                                <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                            </a>
 
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
+                                            <a href="#" class="red">
+                                                <i class="ace-icon fa fa-times bigger-125"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="hr hr10 hr-double"></div>
+
+                            <ul class="pager pull-right">
+                                <li class="previous disabled">
+                                    <a href="#">← Prev</a>
+                                </li>
+
+                                <li class="next">
+                                    <a href="#">Next →</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="hr hr10 hr-double"></div>
 
-                        <ul class="pager pull-right">
-                            <li class="previous disabled">
-                                <a href="#">← Prev</a>
-                            </li>
-
-                            <li class="next">
-                                <a href="#">Next →</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div id="debate" class="tab-pane">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="profile-activity clearfix">
-                                    <div>
-                                        <img class="pull-left" alt="picture" src="gdebate-picture" />
-                                        <a class="title" href="#"> debate title</a>
-                                        <div class="time">
-                                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                            post time
+                        <div id="debate" class="tab-pane">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="profile-activity clearfix">
+                                        <div>
+                                            <img class="pull-left" alt="picture" src="gdebate-picture" />
+                                            <a class="title" href="#"> debate title</a>
+                                            <div class="time">
+                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                post time
                                  </div>
-                                    </div>
+                                        </div>
 
-                                    <div class="tools action-buttons">
-                                        <a href="#" class="blue">
-                                            <i class="ace-icon fa fa-pencil bigger-125"></i>
-                                        </a>
+                                        <div class="tools action-buttons">
+                                            <a href="#" class="blue">
+                                                <i class="ace-icon fa fa-pencil bigger-125"></i>
+                                            </a>
 
-                                        <a href="#" class="red">
-                                            <i class="ace-icon fa fa-times bigger-125"></i>
-                                        </a>
+                                            <a href="#" class="red">
+                                                <i class="ace-icon fa fa-times bigger-125"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="hr hr10 hr-double"></div>
+
+                            <ul class="pager pull-right">
+                                <li class="previous disabled">
+                                    <a href="#">← Prev</a>
+                                </li>
+
+                                <li class="next">
+                                    <a href="#">Next →</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="hr hr10 hr-double"></div>
-
-                        <ul class="pager pull-right">
-                            <li class="previous disabled">
-                                <a href="#">← Prev</a>
-                            </li>
-
-                            <li class="next">
-                                <a href="#">Next →</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
 
-    )
-};
-
+            )
+        };
+        
 ProfileArea.propTypes = {
-    username: PropTypes.string.isRequired,
-    emailAddress: PropTypes.string.isRequired
-};
-
+                name: PropTypes.string.isRequired,
+                username: PropTypes.string.isRequired,
+                Email: PropTypes.string.isRequired,
+                age: PropTypes.string.isRequired
+                
+            
+        };
+        
 export default ProfileArea;

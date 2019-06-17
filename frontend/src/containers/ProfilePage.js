@@ -31,6 +31,7 @@ class MyPage extends React.Component {
           
           name="Maryam"
           username="mary"
+          Email= "default"
           userImg="img"
           age="20"
           joined="2019/06/01"
