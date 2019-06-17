@@ -202,6 +202,7 @@ const ProfileArea = (props) => {
     )
 };
 
+<<<<<<< HEAD
 ProfileArea.propTypes = {
     name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
@@ -212,3 +213,10 @@ ProfileArea.propTypes = {
 };
 
 export default ProfileArea;
+=======
+            )
+        };
+
+
+export default ProfileArea;
+>>>>>>> 2135607e0246f0ec6892ab5725e072c419d14ebe

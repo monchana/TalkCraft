@@ -9,6 +9,7 @@ import {
 import NavigationBar from './NavigationBar'
 
 
+<<<<<<< HEAD
 class ProfilePage extends React.Component {
   componentDidMount() {
 
@@ -29,6 +30,21 @@ class ProfilePage extends React.Component {
     const {
 
       name = '',
+=======
+class MyPage extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      username: null
+    }
+  }
+ componentDidMount(){
+   const { match: { params } } = this.props;
+   this.setState({username: params.userId })
+ }
+ render() {
+    /*const {
+>>>>>>> 2135607e0246f0ec6892ab5725e072c419d14ebe
 
       username = '',
 
@@ -51,6 +67,7 @@ class ProfilePage extends React.Component {
       >
         <ProfileArea
 
+<<<<<<< HEAD
           name={name}
           username={username}
           email={email}
@@ -60,15 +77,22 @@ class ProfilePage extends React.Component {
           aboutMe={aboutME}
         //yesornolist="yesorno list"  How??
         //debatelist="debatelist" ?????
+=======
+          name={this.state.username}
+          username="mary"
+          Email= "default"
+          userImg="img"
+          age="20"
+          joined="2019/06/01"
+          LittleAboutMe="I am studying in SNU"
+          yesornolist="yesorno list"
+          debatelist="debatelist"
+>>>>>>> 2135607e0246f0ec6892ab5725e072c419d14ebe
         />
       </PageTemplate>
     )
   }
 }
-ProfilePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  pageState: PropTypes.object.isRequired
-};
 
 function mapStateToProps(state) {
   return {
