@@ -8,6 +8,7 @@ import {
 
 import NavigationBar from './NavigationBar'
 
+import { Spinner } from 'react-bootstrap'
 
 <<<<<<< HEAD
 class ProfilePage extends React.Component {
@@ -35,61 +36,55 @@ class MyPage extends React.Component {
   constructor(){
     super()
     this.state = {
-      username: null
+      username: null,
+      yesnoList: null,
+      loading: true
     }
   }
  componentDidMount(){
    const { match: { params } } = this.props;
    this.setState({username: params.userId })
+
+   fetch('http://localhost:8000/yesorno/write/')
+   .then(response => response.json())
+   .then(data => this.setState({ yesnoList: data, loading: false }))
  }
  render() {
     /*const {
->>>>>>> 2135607e0246f0ec6892ab5725e072c419d14ebe
 
       username = '',
 
-      email = '',
-
-      userImg = '',
-
-      age = '',
-
-      joined = '',
-
-      aboutMe = ''
+      email = ''
 
     } = this.props.pageState.profile;
-
+*/
+    let yesnoList = (this.state.loading) ? []
+    :
+    this.state.yesnoList.filter(data => data.author == this.state.username)
+    let myPageUI = (this.state.loading)
+    ?
+    <Spinner animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
+    :
+    <PageTemplate
+      header={<NavigationBar />}
+      footer={<Footer />}
+    >
+      <ProfileArea
+        name={this.state.username}
+        username="mary"
+        Email= "default"
+        userImg="img"
+        age="20"
+        joined="2019/06/01"
+        LittleAboutMe="I am studying in SNU"
+        yesornolist="yesorno list"
+        debatelist="debatelist"
+      />
+    </PageTemplate>
     return (
-      <PageTemplate
-        header={<NavigationBar />}
-        footer={<Footer />}
-      >
-        <ProfileArea
-
-<<<<<<< HEAD
-          name={name}
-          username={username}
-          email={email}
-          userImg={userImg} //????should impleamet random avatar
-          age={age}
-          joined={joined}
-          aboutMe={aboutME}
-        //yesornolist="yesorno list"  How??
-        //debatelist="debatelist" ?????
-=======
-          name={this.state.username}
-          username="mary"
-          Email= "default"
-          userImg="img"
-          age="20"
-          joined="2019/06/01"
-          LittleAboutMe="I am studying in SNU"
-          yesornolist="yesorno list"
-          debatelist="debatelist"
->>>>>>> 2135607e0246f0ec6892ab5725e072c419d14ebe
-        />
-      </PageTemplate>
+      myPageUI
     )
   }
 }

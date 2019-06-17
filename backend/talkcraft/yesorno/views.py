@@ -72,7 +72,7 @@ class UserCommentDetail(generics.RetrieveUpdateDestroyAPIView):
 class UserCommentWrite(generics.ListCreateAPIView):
     queryset = UserComment.objects.all()
     permission_classes = (
-        permissions.IsAuthenticatedOrReadOnly,
+        permissions.AllowAny,
        # IsOwnerOrReadOnly
     )
 
