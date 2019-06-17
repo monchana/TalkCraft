@@ -28,6 +28,7 @@ const HomePage = () => {
       footer={<Footer />}
     >
       <MainCarousel/>
+      <MainListGroup/>
     </PageTemplate>
   )
 }

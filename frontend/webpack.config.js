@@ -75,7 +75,7 @@ const wpConfig = {
       historyApiFallback: { index: publicPath },
       inline: true,
       contentBase: 'public',
-      headers: { 'Access-Control-Allow-Origin': '*' },
+      headers: { 'Access-Control-Allow-Origin': '*' , 'X-Frame-Options': 'ALLOWALL'},
       host,
       port,
       stats: 'errors-only',

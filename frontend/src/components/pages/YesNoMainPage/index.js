@@ -18,7 +18,7 @@ import {
 // import { NavigationBar } from 'components'
 
 import  NavigationBar   from '../../../containers/NavigationBar'
-
+import { YesNoList } from 'components'
 
 const YesNoMainPage = () => {
   return (
@@ -26,7 +26,7 @@ const YesNoMainPage = () => {
       header={<NavigationBar/>}
       footer={<Footer />}
     >
-      Yes or No Main Page
+      <YesNoList/>
     </PageTemplate>
   )
 }

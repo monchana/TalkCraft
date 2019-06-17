@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { MDBBtn } from "mdbreact";
+import { MDBBtn, MDBInput } from "mdbreact";
 
 export class LoginForm extends Component {
   constructor(props) {
@@ -32,27 +32,40 @@ export class LoginForm extends Component {
 
   render() {
     return (
-    <div className="form-inline my-0">
-      <div className="md-form form-sm my-0">
-          <input
-              className="form-control form-control-sm mr-sm-2 mb-0"
-              type="text"
-              name="username"
-              placeholder="username"
-              onChange={this.handleInputChange}
-              onKeyPress={this.handleKeyPress}
-          />
-          <input
-              className="form-control form-control-sm mr-sm-2 mb-0"
-              type="password"
-              name="password"
-              placeholder="password"
-              onChange={this.handleInputChange}
-              onKeyPress={this.handleKeyPress}
-          />
+    <div>
+      <div className="grey-text">
+         <MDBInput
+           label="Username"
+           icon="user"
+           group
+           type="text"
+           validate
+           error="wrong"
+           success="right"
+           name="username"
+           value={this.state.username}
+           onInput={this.handleInputChange}
+           onKeyPress={this.handleKeyPress}
+         />
+         <MDBInput
+           label="Password"
+           icon="lock"
+           group
+           type="password"
+           validate
+           error="wrong"
+           success="right"
+           name="password"
+           value={this.state.password}
+           onInput={this.handleInputChange}
+           onKeyPress={this.handleKeyPress}
+           required
+         />
        </div>
        <div>
            <MDBBtn
+            className="text-center"
+            style={{display:"block", margin:"auto"}}
             type="button"
             color="cyan"
             onClick={this.handleSubmit}>
