@@ -9,35 +9,57 @@ import {
 import NavigationBar from './NavigationBar'
 
 
-class MyPage extends React.Component {
+class ProfilePage extends React.Component {
   componentDidMount() {
-    const userId = this.props.pageState.auth.id;
+
+    this.props.dispatch({
+
+      type: types.PROFILE__REQUESTED,
+
+      payload: {
+
+        userId: this.props.pageState.auth.id
+
+      }
+
+    });
+
   }
- render() {
-    /*const {
+  render() {
+    const {
+
+      name = '',
 
       username = '',
 
-      email = ''
+      email = '',
+
+      userImg = '',
+
+      age = '',
+
+      joined = '',
+
+      aboutMe = ''
 
     } = this.props.pageState.profile;
-*/
+
     return (
       <PageTemplate
         header={<NavigationBar />}
         footer={<Footer />}
       >
         <ProfileArea
-          
-          name="Maryam"
-          username="mary"
-          Email= "default"
-          userImg="img"
-          age="20"
-          joined="2019/06/01"
-          LittleAboutMe="I am studying in SNU"
-          yesornolist="yesorno list"
-          debatelist="debatelist"
+
+          name={name}
+          username={username}
+          email={email}
+          userImg={userImg} //????should impleamet random avatar
+          age={age}
+          joined={joined}
+          aboutMe={aboutME}
+        //yesornolist="yesorno list"  How??
+        //debatelist="debatelist" ?????
         />
       </PageTemplate>
     )
@@ -54,4 +76,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default MyPage
+export default ProfilePage
