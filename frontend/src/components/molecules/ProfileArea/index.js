@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 //change the user image yesor no and debate
 //temp img is applied
 //yes or no list and debate list !! for now just show one
+import './index.css';
 
 const ProfileArea = (props) => {
     return (
