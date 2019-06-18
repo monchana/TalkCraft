@@ -1,9 +1,8 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
 import { Overall } from '../../components/pages/molecules/Overall'
-import { getPage, writePage } from '../../store/writePage/actions'
+import * as writePageActions from '../../store/writePage/actions'
 import { bindActionCreators } from 'redux';
-import * as writePageActions from '../src/store/writePage/actions';
 
 /*
 class writePageContainer extends React.Component {
@@ -26,18 +25,19 @@ const mapStateToProps = (state) => {
     return {
 	statefunction : state
     }
-
+  }
 const mapDispatchToProps = (dispatch) => {
     return {
+      //Calling detail page
       onCall: (postId) => {
-        dispatch(getPage(postId))
+        dispatch(writePageActions.getYesOrNoDetail(postId))
       },
-
+      //post new page
       onCreate: (postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
         wordLimit, textA, photoA, textB, photoB, openStatus) => {
         console.log('Container for onPost : Write page function')
         console.log(author)
-        dispatch(postReview(postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
+        dispatch(writePageActions.writePage(postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
             wordLimit, textA, photoA, textB, photoB, openStatus))
       }
     }

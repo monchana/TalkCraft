@@ -39,7 +39,7 @@ export function* watchgetPostDetailPage() {
   yield takeEvery(writePageActions.getPage, getPostPage)
 }
 
-export function* postReview({ postId, author, title, mainTopic, summary, 
+export function* postYesOrNo({ postId, author, title, mainTopic, summary, 
   timeLimit, totalTimeLimit, wordLimit, textA, photoA, textB, photoB, 
   openStatus }) {
   try {

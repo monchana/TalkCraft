@@ -2,38 +2,50 @@ import { initialState } from './selectors'
 import * as writePageActions from './actions'
 import swal from './node_modules/sweetalert'
 
+
+//Might be better to use shell method
+
 const handleChange = (e) => {
   this.setState({
       [e.target.name]: e.target.value
   });
 }
 
-//TODO NEEEEEED FIXXXXXXXX
 
-const writePageReducer = (state = initialState, action) => {
+/*TODO
+1. Need to figure out a method to change input
+2. Need to figure out how to change openStatus according to time
+
+*/
+const writePageReducer = (state = initialState, writePageActions) => {
   let next = state
   //const isLoggedIn = localStorage.has
-  switch (action.type) {
+  switch (writePageActions.type) {
     case writePageActions.IMAGEUPLOAD:
       return {
           ...next,
           photo : writePageActions.photo,
       }
 
-    case writePageActions.WRITE_FAIL:
+    //If it succeeds post to next process
+    case writePageActions.WRITE_SUCCESS:
       return next
 
+    case writePageActions.WRITE_FAIL:
+      return next
+    
+    //post page, return next status
     case writePageActions.WRITE_REQUEST:
       return next
 
-    case writePageActions.GET_PAGE_FAIL:
+    case writePageActions.GET_DETAIL:
+      state.postId = writePageActions.postId
+      return next
+    
+    case writePageActions.GET_DETAIL_FAIL:
       return next
 
-    case writePageActions.GET_PAGE:
-      state.postId = action.postId
-      return next
-
-    case writePageActions.GET_PAGE_SUCCESS:
+    case writePageActions.GET_DETAIL_SUCCESS:
       return {
         ...next,
         author: writePageActions.author,
@@ -46,7 +58,8 @@ const writePageReducer = (state = initialState, action) => {
         textA: writePageActions.textA,
         photoA: writePageActions.photoA,
         textB: writePageActions.textB,
-        photoB: writePageActions.photoB
+        photoB: writePageActions.photoB,
+        openStatus: writePageActions.openStatus
         //Need to insert  open status
         //,openStatus: action.openStatus
       }

@@ -225,7 +225,7 @@ class Overall extends React.Component {
             this.props.statefunction.writepage.photoB
         )
       }
-    }
+    }*/
 
     return (
       <div>

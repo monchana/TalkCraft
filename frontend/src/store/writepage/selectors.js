@@ -1,3 +1,5 @@
+//Need to change initialState : it might require another state
+
 export const initialState = Map({
     postId: null, 
     author: '', 

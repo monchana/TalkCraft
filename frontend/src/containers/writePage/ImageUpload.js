@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { ImageUpload } from 'components/atoms/ImageUpload'
-import { imageUpload } from '../store/writepage/actions'
+import * as writePageActions from '../../store/writePage/actions'
 
 const mapStateToProps = (state) => { 
     return {
@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onImageUpload: (file) => {
-            dispatch(imageUpload(file))
+        onImageUpload: (photo) => {
+            dispatch(write.writePageActions.imageUpload(photo))
         }
     }
 }

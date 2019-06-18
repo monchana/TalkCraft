@@ -1,8 +1,13 @@
 import * as ACTIONTYPES from "./actionTypes"
 
+//Do I need to use method in Velopert page?
+//Might be better to use shell method
+
 //Neeeeeed full adjustment
 //DO I NEED TO MAKE FIX FOR EVERY POSSIBLE CASE???????ls
 
+
+//return post page 
 export const writePage = (postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
     wordLimit, textA, photoA, textB, photoB, openStatus) => ({
   type: ACTIONTYPES.WRITE_REQUEST,
@@ -10,36 +15,45 @@ export const writePage = (postId, author, title, mainTopic, summary, timeLimit, 
     wordLimit, textA, photoA, textB, photoB, openStatus },
 })
 
+//fail to post page
 export const writePageFail = () => ({ 
     type: ACTIONTYPES.WRITE_FAIL  
 })
 
+//Success to post page
 export const writePageSuccess = () => ({ 
     type: ACTIONTYPES.WRITE_SUCCESS  
 })
 
+//Image upload function
 export const imageUpload = (photo) => ({
     type: ACTIONTYPES.IMAGEUPLOAD,
     data : { photo },
 })
 
-export const getPage = (postId) => ({
-    type: ACTIONTYPES.GET_PAGE,
+//Page to return yesorno detail page
+export const getYesOrNoDetail = (postId) => ({
+    type: ACTIONTYPES.GET_DETAIL,
     data : { postId },
 })
 
-export const getPageFail = () => ({
-    type : ACTIONTYPES.GET_PAGE_FAIL
+//fail to return yesorno page
+export const getYesOrNODetailFail = () => ({
+    type : ACTIONTYPES.GET_DETAIL_FAIL
 })
 
-export const getPageSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
+//success to return yesorno page
+export const getYesOrNoDetailSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
     totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus) => ({
-    type : ACTIONTYPES.GET_PAGE_SUCCESS,
-    //Need to change open status of the get post 
+    type : ACTIONTYPES.GET_DETAIL_SUCCESS,
+
+    //return status changes accroding to open time 
     data : {postId, author, title, mainTopic, summary, timeLimit, 
         totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
 })
 
+
+//Changing input function : should be unncessary
 export const inputChange = (category, value) => ({
     type: ACTIONTYPES.INPUTCHANGE,
     data : { category, value },
