@@ -2,7 +2,11 @@ import React from 'react'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
-import { HomePage, YesNoMainPage, DebateMainPage, RankMainPage, YesOrNoWritePage } from 'components'
+import { HomePage, YesNoMainPage, DebateMainPage, RankMainPage,
+          YesNoDetailPage, DebateDetailPage, YesNoWritePage}
+from 'components'
+
+import { ProfilePage } from 'containers'
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
 
@@ -17,9 +21,13 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Switch>
         <Route path="/" component={HomePage} exact />
-        <Route path="/yesno-main" component={YesOrNoWritePage} exact />
+        <Route path="/yesno-main" component={YesNoMainPage} exact />
+        <Route path="/yesno-detail/:yesnoId" component={YesNoDetailPage} exact />
         <Route path="/debate-main" component={DebateMainPage} exact />
+        <Route path="/debate-detail" component={DebateDetailPage} exact />
         <Route path="/rank-main" component={RankMainPage} exact />
+        <Route path="/yesno-write" component={YesNoWritePage} exact />
+        <Route path="/users/:userId" component={ProfilePage} exact />
       </Switch>
     </ThemeProvider>
   )

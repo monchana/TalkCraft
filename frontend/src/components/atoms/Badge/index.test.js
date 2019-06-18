@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import ImagePreview from '.'
+import Badge from '.'
 
-const wrap = (props = {}) => shallow(<ImagePreview {...props} />)
+const wrap = (props = {}) => shallow(<Badge {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })

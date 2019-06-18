@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListGroup } from 'react-bootstrap'
 
-const RankListUsers = ({ children, ...props }) => {
+const RankHotUsers = ({ children, ...props }) => {
     return (
         <ListGroup as="ul" className="list-group-horizontal w-100" style={{ marginTop: "10px" }}>
             <ListGroup.Item as="li" className="w-25 p-3">
@@ -22,4 +22,4 @@ const RankListUsers = ({ children, ...props }) => {
     )
 }
 
-export default RankListUsers
+export default RankHotUsers

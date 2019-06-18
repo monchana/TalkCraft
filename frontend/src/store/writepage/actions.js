@@ -5,24 +5,22 @@ import * as ACTIONTYPES from "./actionTypes"
 
 //Neeeeeed full adjustment
 //DO I NEED TO MAKE FIX FOR EVERY POSSIBLE CASE???????ls
-
-
-//return post page 
-export const writePage = (postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
+//
+export const writePage = (postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit,
     wordLimit, textA, photoA, textB, photoB, openStatus) => ({
   type: ACTIONTYPES.WRITE_REQUEST,
-  data: { postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
+  data: { postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit,
     wordLimit, textA, photoA, textB, photoB, openStatus },
 })
 
 //fail to post page
 export const writePageFail = () => ({ 
-    type: ACTIONTYPES.WRITE_FAIL  
+    type: ACTIONTYPES.WRITE_FAIL,  
 })
 
 //Success to post page
 export const writePageSuccess = () => ({ 
-    type: ACTIONTYPES.WRITE_SUCCESS  
+    type: ACTIONTYPES.WRITE_SUCCESS,  
 })
 
 //Image upload function

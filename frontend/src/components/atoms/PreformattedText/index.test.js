@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import ImageUpload from '.'
+import PreformattedText from '.'
 
-const wrap = (props = {}) => shallow(<ImageUpload {...props} />)
+const wrap = (props = {}) => shallow(<PreformattedText {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })

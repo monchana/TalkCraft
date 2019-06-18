@@ -31,7 +31,7 @@ export function* signupAsync({data}) {
   } catch (e) {
     swal({
       title: 'Sorry...',
-      text: 'That username is already taken',
+      text: 'That username or email is already taken',
       button: 'Try another',
     })
     console.error(e)

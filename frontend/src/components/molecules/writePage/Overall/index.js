@@ -1,89 +1,11 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
-import CancelButton from 'components'
-import PostButton from 'components'
-import ImageUpload from '../../../containers/writePage/ImageUpload'
 
 const Wrapper = styled.div`
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
 `
-const Promblematic = () => {
-  throw (new Error('버그가 나타났다!'));
-  return (
-    <div>
-      
-    </div>
-  );
-};
-
-class Overall extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  static defaultProps = {
-    onIncrement: () => console.warn('onIncrement is not defined'),
-    object: {},
-    array: []
-  }
-
-  componentWillUnmount= () => {
-    console.log("componentWillUnmount")
-  }
-
-  //Require Fiiiixxxxx
-  //Telling that component mounted
-  //Need to check v16.3
-  componentDidMount = () => {
-    const { yesornopost } = this.props;
-    if (yesornopost !== 'default') {
-      this.props.onCall(yesornopost)
-    }
-  }
-
-  //Do not update if title or main Topic is invalid
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldComponentUpdate');
-    if ((title == null) || (mainTopic == null)) return false;
-    return true;
-  }
-
-  getSnapshotBeforeUpdate(prevProps, prevState){
-    if (prevState.array != this.state.array) {
-      const {
-        scrollTop, scrollHeight
-      } = this.list;
-      return {
-        scrollTop, scrollHeight
-      };
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (snapshot) {
-      const { scrollTop } = this.list;
-      if (scrollTop !== snapshot.scrollTop) return; 
-      //If the function already exists, do not process it
-      const diff = this.list.scrollHeight - snapshot.scrollHeight;
-      this.list.scrollTop += diff;
-    }
-  }
-  //Catch Bugggg
-  componentDidCatch(error, info) {
-    this.setState({
-      error : true
-    });
-  }
-  
-
-  render() {
-    if (this.state.error) return (<h1>Buggggg!</h1>);
-    if (!this.props.object || !this.props.array || this.props.array.length ===0) return null;
-
-    
 
     let title, mainTopic, summary, timeLimit, 
     totalTimeLimit, wordLimit, descriptionA, descriptionB
@@ -321,7 +243,7 @@ class Overall extends React.Component {
 
 Overall.propTypes = {
   reverse: PropTypes.bool,
-  yesornopost: PropTypes.node,
+  children: PropTypes.node,
 }
 
 export default Overall

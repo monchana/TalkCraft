@@ -5,7 +5,7 @@ import * as actions from 'store/actions'
 const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
-  fetchSignup: (username, password) => dispatch(actions.fetchSignup(username, password)),
+  fetchSignup: (username, password, email) => dispatch(actions.fetchSignup(username, password, email)),
 })
 
 

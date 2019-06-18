@@ -8,16 +8,18 @@ export class SignupForm extends Component {
       username: '',
       password: '',
       passwordCheck: '',
+      email:'',
       pwdDiff: true,
       submitDisabled: true,
+      emailValid: false,
     }
   }
 
 
   handleSubmit = event => {
     event.preventDefault()
-    const { username, password } = this.state
-    this.props.fetchSignup(username, password)
+    const { username, password, email } = this.state
+    this.props.fetchSignup(username, password, email)
   }
 
   handleInputChange = event => {
@@ -27,23 +29,46 @@ export class SignupForm extends Component {
     })
     //FIXME : Fancy way?
     //Password valid check -> enable submit
-    if (event.target.name != 'username') {
+    if (event.target.name != 'username' && event.target.name != 'email') {
       let passwordIsValid = (event.target.value == this.state.password)
                               || (event.target.value == this.state.passwordCheck)
       if(!passwordIsValid) {
         this.setState({ pwdDiff: true, submitDisabled: true })
-      } else if(this.state.username != '') {
-        this.setState({ pwdDiff: false, submitDisabled: false })
+      } else {
+        this.setState({ pwdDiff: false })
+      }
+
+      if(passwordIsValid && this.state.username != '' && this.state.emailValid) {
+        this.setState({ submitDisabled: false })
       }
     }
 
     //Username valid check -> enable submit
     if(event.target.name == 'username') {
-      if((this.state.password != '') && (event.target.value != '') && (this.state.password == this.state.passwordCheck)){
+      if((this.state.password != '') && (event.target.value != '') && (this.state.password == this.state.passwordCheck) && this.state.emailValid){
         this.setState({ submitDisabled: false })
       } else {
         this.setState({ submitDisabled: true })
       }
+    }
+
+    //FIXME
+    //Refactoring needed
+    if(event.target.name == 'email') {
+      if((this.state.password != '') && (this.state.password == this.state.passwordCheck) && this.state.username != '' && this.state.emailValid){
+        this.setState({ submitDisabled: false })
+      } else {
+        this.setState({ submitDisabled: true })
+      }
+
+      if(value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
+         this.setState({ emailValid: true })
+         if((this.state.password != '') && (this.state.password == this.state.passwordCheck) && this.state.username != '' ){
+           this.setState({ submitDisabled: false })
+         }
+       } else{
+         this.setState({ emailValid: false })
+       }
     }
   }
 
@@ -94,11 +119,17 @@ export class SignupForm extends Component {
                  onInput={this.handleInputChange}
                  required
                >
-               <div className="invalid-feedback">
-                 Check your password
-               </div>
-               <div className="valid-feedback">Looks good!</div>
-             </MDBInput>
+              </MDBInput>
+              <MDBInput
+                label="Email address"
+                className={this.state.emailValid ? "is-valid" : "is-invalid" }
+                icon="envelope"
+                group
+                type="email"
+                name="email"
+                value={this.state.email}
+                onInput={this.handleInputChange}
+              />
             </div>
 
 

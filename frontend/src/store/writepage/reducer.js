@@ -1,6 +1,6 @@
 import { initialState } from './selectors'
-import * as writePageActions from './actions'
-import swal from './node_modules/sweetalert'
+import * as ACTIONTYPES from './actionTypes'
+import swal from 'sweetalert'
 
 
 //Might be better to use shell method
@@ -72,36 +72,4 @@ const writePageReducer = (state = initialState, writePageActions) => {
   }
 }
 
-
 export default writePageReducer
-
-
-/*
-  case writePageActions.INPUTCHANGE:
-    if (writePageActions.category=='title'){
-      return {...next, title: writePageActions.value}
-    }
-    else if (writePageActions.category=='mainTopic'){
-      return {...next, mainTopic : writePageActions.value}
-    }
-    else if (writePageActions.category=='summary'){
-      return {...next, summary : writePageActions.value}
-    }
-    else if (writePageActions.category=='timeLimit'){
-      return {...next, timeLimit : writePageActions.value}
-    }
-    else if (writePageActions.category=='totalTimeLimit'){
-      return {...next, totalTimeLimit : action.value}
-    }
-    else if (action.category=='wordLimit'){
-      return {...next, wordLimit : action.value}
-    }
-    else if (action.category=='textA'){
-      return {...next, textA : action.value}
-    }
-    else if (action.category=='textB'){
-      return {...next, textB : action.value}
-    }
-    else {
-      return next
-    }*/

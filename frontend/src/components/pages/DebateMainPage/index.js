@@ -13,7 +13,7 @@
 // https://github.com/diegohaz/arc/wiki/Atomic-Design
 import React from 'react'
 import {
-  PageTemplate, Header, PrimaryNavigation, Footer
+  PageTemplate, Header, PrimaryNavigation, Footer, DebateList
 } from 'components'
 // import { NavigationBar } from 'components'
 
@@ -26,7 +26,7 @@ const DebateMainPage = () => {
       header={<NavigationBar/>}
       footer={<Footer />}
     >
-      Debate Main Page
+      <DebateList/>
     </PageTemplate>
   )
 }
