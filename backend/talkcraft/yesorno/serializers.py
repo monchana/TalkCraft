@@ -24,7 +24,7 @@ class YesOrNoSerializer(serializers.ModelSerializer):
     class Meta:
         model = YesOrNo
         fields = ('id', 'created', 'author', 'title', 'mainTopic', 
-                    'startTime', 'summary', 'textDescriptionA', 
+                    'startTime', 'summary', 'candidateA', 'candidateB', 'textDescriptionA', 
                   'textDescriptionB', 'wordLimit', 'totalTimeLimit', 'pictureA', 
                   'pictureB', 'openStatus', 'comments') 
     

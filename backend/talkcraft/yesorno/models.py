@@ -10,6 +10,9 @@ class YesOrNo(models.Model):
     mainTopic = models.CharField(max_length=100, blank=True, default='')
     startTime = models.DateTimeField()
     summary = models.TextField()
+
+    candidateA = models.CharField(max_length=30, blank=True, default='')
+    candidate = models.CharField(max_length=30, blank=True, default='')
     textDescriptionA = models.TextField()
     textDescriptionB = models.TextField()
     # Need to set max and min Value
