@@ -20,19 +20,8 @@ import {
 
 export default function profile(state = {
 
-    id: undefined,
-
-    name: undefined,
-
     username: undefined,
-
-    email: undefined,
-
     userImg: undefined,
-
-    age: undefined,
-
-    joined: undefined,
 
     aboutMe: undefined
 
@@ -53,19 +42,7 @@ export default function profile(state = {
 
             return Object.assign({}, state, {
 
-                id,
-
-                name,
-
                 username,
-
-                email,
-
-                userImg,
-
-                age,
-
-                joined,
 
                 aboutMe
 

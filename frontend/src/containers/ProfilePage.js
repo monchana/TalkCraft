@@ -8,83 +8,53 @@ import {
 
 import NavigationBar from './NavigationBar'
 
-import { Spinner } from 'react-bootstrap'
 
-<<<<<<< HEAD
-class ProfilePage extends React.Component {
-  componentDidMount() {
-
-    this.props.dispatch({
-
-      type: types.PROFILE__REQUESTED,
-
-      payload: {
-
-        userId: this.props.pageState.auth.id
-
-      }
-
-    });
-
-  }
-  render() {
-    const {
-
-      name = '',
-=======
 class MyPage extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      username: null,
-      yesnoList: null,
-      loading: true
+      username: null
     }
   }
- componentDidMount(){
-   const { match: { params } } = this.props;
-   this.setState({username: params.userId })
-
-   fetch('http://localhost:8000/yesorno/write/')
-   .then(response => response.json())
-   .then(data => this.setState({ yesnoList: data, loading: false }))
- }
- render() {
+  componentDidMount() {
+    const { match: { params } } = this.props;
+    this.setState({ username: params.userId })
+  }
+  render() {
     /*const {
 
       username = '',
 
-      email = ''
+      email = '',
 
-    } = this.props.pageState.profile;
-*/
-    let yesnoList = (this.state.loading) ? []
-    :
-    this.state.yesnoList.filter(data => data.author == this.state.username)
-    let myPageUI = (this.state.loading)
-    ?
-    <Spinner animation="border" role="status">
-      <span className="sr-only">Loading...</span>
-    </Spinner>
-    :
-    <PageTemplate
-      header={<NavigationBar />}
-      footer={<Footer />}
-    >
-      <ProfileArea
-        name={this.state.username}
-        username="mary"
-        Email= "default"
-        userImg="img"
-        age="20"
-        joined="2019/06/01"
-        LittleAboutMe="I am studying in SNU"
-        yesornolist="yesorno list"
-        debatelist="debatelist"
-      />
-    </PageTemplate>
+      userImg = '',
+
+      age = '',
+
+      joined = '',
+
+      aboutMe = ''
+
+    } = this.props.pageState.profile;*/
+
     return (
-      myPageUI
+      <PageTemplate
+        header={<NavigationBar />}
+        footer={<Footer />}
+      >
+        <ProfileArea
+
+          username={this.state.username}
+          //Email="default" It is going to be anonymous users so no need for email and age
+          userImg="img"
+          //age="20"
+          //joined="2019/06/01"
+          myrank=" Golden (35)"
+          LittleAboutMe="I am studying in SNU"
+          yesornolist="yesorno list"
+          debatelist="debatelist"
+        />
+      </PageTemplate>
     )
   }
 }
@@ -95,4 +65,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default ProfilePage
+export default MyPage
