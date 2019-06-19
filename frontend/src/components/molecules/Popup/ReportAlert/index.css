@@ -10,7 +10,7 @@
 
     transition: all .8s;
 
-    width: 60%;
+    width: 80%;
 
 }
 
@@ -18,7 +18,7 @@
 
 .modal-header {
 
-    background: #263238;
+    background:lightskyblue;
 
     height: 40px;
 
@@ -58,7 +58,7 @@
 
 .modal-footer {
 
-    background: #263238;
+    background: lightskyblue;
 
     height: 35px;
 
@@ -92,9 +92,9 @@
 
 
 
-.btn-report {
+.btn-report1 ,.btn-report2 ,.btn-report3 , .btn-report4  { 
 
-    background: coral;
+    background: white;
 
     border: none;
 
@@ -106,22 +106,23 @@
 
     outline: none;
 
-    padding: 10px;
+    padding: 5px;
 
 }
 
 
+.btn-report1 ,.btn-report2 ,.btn-report3 , .btn-report4 {
 
-
-
-
-.btn-report{
-
-    background-color:crimson;
+    background-color:white;
 
     float: right;
 
 }
+
+
+
+
+
 
 
 

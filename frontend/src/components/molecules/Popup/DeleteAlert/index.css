@@ -18,7 +18,7 @@
 
 .modal-header {
 
-    background: #263238;
+    background: lightskyblue;
 
     height: 40px;
 
@@ -58,7 +58,7 @@
 
 .modal-footer {
 
-    background: #263238;
+    background: lightskyblue;
 
     height: 35px;
 
@@ -117,14 +117,14 @@
 
 .btn-yes{
 
-    background-color: green;
+    background-color: rgb(129, 245, 129);
 
     float: right;
 
 }
 .btn-no{
 
-    background-color: red;
+    background-color: rgb(252, 107, 107);
 
     float: right;
 
