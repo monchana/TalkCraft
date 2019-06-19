@@ -12,7 +12,7 @@ export function* getPostPage({ postId }) {
   try {
     if (postId === 'default') {
       console.log(postId)
-      yield put(writePageActions.getPageSuccess(null, null, null, null,
+      yield put(actions.getYesOrNoDetailSuccess(null, null, null, null,
         null, null, null, null, null, null,
         null, null, false))
     }
@@ -21,25 +21,25 @@ export function* getPostPage({ postId }) {
       const yesornoDetail = yield callUrl('GET', `${yesornoDetail}${reviewId}/`)
       const jsonData = yield yesornoDetail.json()
       console.log(jsonData)
-      const { postId, author, title, mainTopic, summary, timeLimit, 
-        totalTimeLimit, wordLimit, textA, photoA, 
+      const { postId, author, title, mainTopic, summary, timeLimit,
+        totalTimeLimit, wordLimit, textA, photoA,
         textB, photoB, openStatus } = jsonData
-      yield put(writePageActions.getPageSuccess(postId, author, title, 
-        mainTopic, summary, timeLimit, totalTimeLimit, wordLimit, 
+      yield put(actions.getYesOrNoDetailSuccess(postId, author, title,
+        mainTopic, summary, timeLimit, totalTimeLimit, wordLimit,
         textA, photoA, textB, photoB, openStatus))
     }
   } catch (err) {
     console.log(err)
-    yield put(writePageActions.getPageFail())
+    yield put(actions.getYesOrNODetailFail())
   }
 }
 
 export function* watchgetPostDetailPage() {
-  yield takeEvery(writePageActions.getPage, getPostPage)
+  yield takeEvery(ACTIONTYPES.GET_DETAIL, getPostPage)
 }
 
-export function* postYesOrNo({ postId, author, title, mainTopic, summary, 
-  timeLimit, totalTimeLimit, wordLimit, textA, photoA, textB, photoB, 
+export function* postYesOrNo({ postId, author, title, mainTopic, summary,
+  timeLimit, totalTimeLimit, wordLimit, textA, photoA, textB, photoB,
   openStatus }) {
   try {
     // FIXME
@@ -69,10 +69,6 @@ export function* postYesOrNo({ postId, author, title, mainTopic, summary,
   }
 }
 
-export function* watchWrite() {
-  yield takeEvery(ACTIONTYPES.WRITE_YESNO_REQUEST, writeAsync);
-}
-
 export default function* () {
-  yield fork(watchWrite);
+  yield fork(watchgetPostDetailPage)
 }

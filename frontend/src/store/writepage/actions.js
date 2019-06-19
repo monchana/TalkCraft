@@ -14,13 +14,13 @@ export const writePage = (postId, author, title, mainTopic, summary, timeLimit, 
 })
 
 //fail to post page
-export const writePageFail = () => ({ 
-    type: ACTIONTYPES.WRITE_FAIL,  
+export const writePageFail = () => ({
+    type: ACTIONTYPES.WRITE_FAIL,
 })
 
 //Success to post page
-export const writePageSuccess = () => ({ 
-    type: ACTIONTYPES.WRITE_SUCCESS,  
+export const writePageSuccess = () => ({
+    type: ACTIONTYPES.WRITE_SUCCESS,
 })
 
 //Image upload function
@@ -41,13 +41,13 @@ export const getYesOrNODetailFail = () => ({
 })
 
 //success to return yesorno page
-export const getYesOrNoDetailSuccess = (postId, author, title, mainTopic, summary, timeLimit, 
+export const getYesOrNoDetailSuccess = (postId, author, title, mainTopic, summary, timeLimit,
     totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus) => ({
     type : ACTIONTYPES.GET_DETAIL_SUCCESS,
 
-    //return status changes accroding to open time 
-    data : {postId, author, title, mainTopic, summary, timeLimit, 
-        totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus}, 
+    //return status changes accroding to open time
+    data : {postId, author, title, mainTopic, summary, timeLimit,
+        totalTimeLimit, wordLimit, textA, photoA, textB, photoB, openStatus},
 })
 
 
@@ -55,4 +55,15 @@ export const getYesOrNoDetailSuccess = (postId, author, title, mainTopic, summar
 export const inputChange = (category, value) => ({
     type: ACTIONTYPES.INPUTCHANGE,
     data : { category, value },
+})
+
+
+export const writeYesNo = (title, username) => ({
+  type: ACTIONTYPES.WRITE_YESNO_REQUEST,
+  data: { title, username },
+})
+
+export const writeYesNoSuccess = data => ({
+  type: ACTIONTYPES.SUCCESS_WRITE_YESNO,
+  data
 })

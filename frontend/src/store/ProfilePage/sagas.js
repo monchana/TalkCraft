@@ -1,7 +1,7 @@
 import * as api from '../../services/api/api.profile';
-import { call, put } from 'redux-saga/effects';
+import { call, put, fork, takeLatest  } from 'redux-saga/effects';
 
-import { takeLatest } from 'redux-saga';
+// import { takeLatest } from 'redux-saga';
 
 import * as types from './actionTypes';
 
@@ -136,9 +136,6 @@ export function* watchRequestProfile() {
 
 }
 
-
-
-
-
-
-
+export default function* () {
+  yield fork(watchRequestProfile);
+}
