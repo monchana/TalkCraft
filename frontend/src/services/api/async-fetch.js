@@ -1,8 +1,9 @@
+
+ import HttpApiCallError from './HttpApiCallError';
 export default async function asyncFetch(url, requestConfig = {}) {
 
 
 
-    import HttpApiCallError from './HttpApiCallError';
     const response = await fetch(url, requestConfig);
 
 
