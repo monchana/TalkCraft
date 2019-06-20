@@ -33,12 +33,12 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(writePageActions.getYesOrNoDetail(postId))
       },
       //post new page
-      onCreate: (postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
-        wordLimit, textA, photoA, textB, photoB, openStatus) => {
+      onCreate: (postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit,
+        wordLimit, candidateA, textA, photoA, candidateB, textB, photoB, openStatus) => {
         console.log('Container for onPost : Write page function')
         console.log(author)
-        dispatch(writePageActions.writePage(postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit, 
-            wordLimit, textA, photoA, textB, photoB, openStatus))
+        dispatch(writePageActions.writePage(postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit,
+          wordLimit, candidateA, textA, photoA, candidateB, textB, photoB, openStatus))
       }
     }
   }

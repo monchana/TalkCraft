@@ -17,35 +17,53 @@ const handleChange = (e) => {
 2. Need to figure out how to change openStatus according to time
 
 */
-const writePageReducer = (state = initialState, writePageActions) => {
+const writePageReducer = (state = initialState, actions) => {
   let next = state
+  if (!state) {
+    state = {
+      author,
+      title: '',
+      postId: null,
+      candidateA: null,
+      candidateB: null,
+      summary: null,
+      timeLimit: null,
+      totalTimeLimit: null,
+      wordLimit: null,
+      textB: null,
+      photoA: null,
+      photoB: null,
+      photoAURL: '',
+      photoBURL: '',
+    }
+  }
   //const isLoggedIn = localStorage.has
-  switch (writePageActions.type) {
-    case writePageActions.IMAGEUPLOAD:
+  switch (actions.type) {
+    case ACTIONTYPES.IMAGEUPLOAD:
       return {
           ...next,
-          photo : writePageActions.photo,
+          photo : actions.photo,
       }
 
     //If it succeeds post to next process
-    case writePageActions.WRITE_SUCCESS:
+    case ACTIONTYPES.WRITE_SUCCESS:
       return next
 
-    case writePageActions.WRITE_FAIL:
+    case ACTIONTYPES.WRITE_FAIL:
       return next
 
     //post page, return next status
-    case writePageActions.WRITE_REQUEST:
+    case ACTIONTYPES.WRITE_REQUEST:
       return next
 
-    case writePageActions.GET_DETAIL:
+    case ACTIONTYPES.GET_DETAIL:
       state.postId = writePageActions.postId
       return next
-
-    case writePageActions.GET_DETAIL_FAIL:
+    
+    case ACTIONTYPES.GET_DETAIL_FAIL:
       return next
 
-    case writePageActions.GET_DETAIL_SUCCESS:
+    case ACTIONTYPES.GET_DETAIL_SUCCESS:
       return {
         ...next,
         author: writePageActions.author,
@@ -59,7 +77,6 @@ const writePageReducer = (state = initialState, writePageActions) => {
         photoA: writePageActions.photoA,
         textB: writePageActions.textB,
         photoB: writePageActions.photoB,
-        openStatus: writePageActions.openStatus
         //Need to insert  open status
         //,openStatus: action.openStatus
       }
@@ -67,6 +84,10 @@ const writePageReducer = (state = initialState, writePageActions) => {
     /*case writePageActions.inputChange:
       return {...next, {writePageActions.category : writePageActions.value} }
       */
+    case ACTIONTYPES.CANCELPAGE:
+      return {
+      }
+
     default:
       return next
   }

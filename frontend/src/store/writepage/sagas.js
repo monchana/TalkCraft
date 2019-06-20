@@ -8,6 +8,7 @@ const yesornoPostUrl = `${defaultURL}yesorno/write/`
 const yesornoDetailUrl = `${defaultURL}yesorno/detail/`
 
 
+//Get Detail Page
 export function* getPostPage({ postId }) {
   try {
     if (postId === 'default') {
@@ -18,7 +19,7 @@ export function* getPostPage({ postId }) {
     }
     else {
       //console.log('get post review detail saga')
-      const yesornoDetail = yield callUrl('GET', `${yesornoDetail}${reviewId}/`)
+      const yesornoDetail = yield callUrl('GET', `${yesornoDetailUrl}${reviewId}/`)
       const jsonData = yield yesornoDetail.json()
       console.log(jsonData)
       const { postId, author, title, mainTopic, summary, timeLimit,
@@ -38,11 +39,12 @@ export function* watchgetPostDetailPage() {
   yield takeEvery(ACTIONTYPES.GET_DETAIL, getPostPage)
 }
 
-export function* postYesOrNo({ postId, author, title, mainTopic, summary,
-  timeLimit, totalTimeLimit, wordLimit, textA, photoA, textB, photoB,
+//Post yesorno page
+export function* postYesOrNo({ postId, author, title, mainTopic, summary, 
+  timeLimit, totalTimeLimit, wordLimit, candidateA, textA, photoA, candidateB, textB, photoB, 
   openStatus }) {
   try {
-    // FIXME
+    // FIXXXXXXXXXX ME : require to change state (add authorization)
     // need to add contents
     const title = data.title;
     const password = 'test'
@@ -59,13 +61,14 @@ export function* postYesOrNo({ postId, author, title, mainTopic, summary,
      });
     // const response = yield call(api.post, "http://localhost:8000/yesorno/write/", data);
     yield put(actions.writeYesNoSuccess({title, ...response}))
-  } catch (e) {
+  } catch (err) {
     swal({
       title: 'Sorry...',
       text: 'That username is already taken',
       button: 'Try another',
     })
-    console.error(e)
+    yield put(ACTIONTYPES.WRITE_FAIL())
+    console.error(err)
   }
 }
 

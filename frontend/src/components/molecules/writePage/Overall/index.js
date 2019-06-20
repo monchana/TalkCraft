@@ -1,29 +1,40 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
+import ImageUpload from '../../../../../containers/writePage/ImageUpload'
 
 const Wrapper = styled.div`
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
 `
+class Overall extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
-    let title, mainTopic, summary, timeLimit, 
+
+  render () {
+    /*let title, mainTopic, summary, timeLimit, 
     totalTimeLimit, wordLimit, descriptionA, descriptionB
     
     let titleText, mainTopicText, summaryText, timeLimitText,
     totalTimeLimitText, wordLimitText, descriptionAText, descriptionBText
     let imgUrlTextA
     let imgUrlTextB
-    handleChange = (e) => {
-      this.setState({
-        [e.target.name]: e.target.value
-      });
-    }
-    if (this.props.statefunction.PostPage.photoA) {
-      imgUrlTextA = this.props.statefunction.PostPage.photoA
-    } else {
-      imgUrlTextA = ''
-    }
+    */
+   handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  if (this.props.statefunction.PostPage.photoA) {
+      //path directory to A?
+    imgUrlTextA = this.props.statefunction.PostPage.photoA
+  } else {
+    imgUrlTextA = ''
+  }
     if (this.props.statefunction.PostPage.photoB) {
       imgUrlTextB = this.props.statefunction.PostPage.photoB
     } else {
@@ -109,7 +120,7 @@ const Wrapper = styled.div`
     //handleSubmit 의 형태가 훨씬 좋기는 한데.... 모르겠다
 
 
-/*
+
     handleSubmit = (e) => {
       e.preventDefault();
       this.props.onCreate(this.state);
@@ -127,9 +138,9 @@ const Wrapper = styled.div`
           photoB: null
       })
     }
-/*
+
 //과연 어떤 식으로 진행하는게 옳을까?
-    onPost= () => {
+   /* onPost= () => {
       if (title.value && mainTopic.value && summary.value && timeLimit.value &&
         totalTimeLimit.value && wordLimit.value && descriptionA.value && descriptionB.value){
           this.props.onCreate(
