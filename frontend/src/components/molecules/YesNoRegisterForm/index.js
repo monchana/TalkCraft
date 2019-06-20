@@ -18,18 +18,18 @@ export class YesNoRegisterForm extends Component {
     this.state = {
       username: '',
       title: '',
-      postId: null, 
-      author: '', 
+      postId: null,
+      author: '',
       mainTopic: '',
       summary: '',
       timeLimit: null,
-      totalTimeLimit: null, 
+      totalTimeLimit: null,
       wordLimit: null,
       candidateA: '',
-      textA: '', 
-      photoA: null, 
+      textA: '',
+      photoA: null,
       candidateB: '',
-      textB: '', 
+      textB: '',
       photoB: null
     }
     this.upload22 = React.createRef();
@@ -93,6 +93,7 @@ export class YesNoRegisterForm extends Component {
     // const user = JSON.parse(localStorage.getItem('user')).username
     this.props.writeYesNo(postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit,
     wordLimit, candidateA, textA, photoA, candidateB, textB, photoB)
+    console.log("??")
   }
 
   componentWillMount() {
@@ -102,45 +103,44 @@ export class YesNoRegisterForm extends Component {
     })
   }
   render() {
-    let imgUrlTextA, imgUrlTextB
-    if (this.props.statefunction.writePage.photoA) {
-      //path directory to A?
-    imgUrlTextA = this.props.statefunction.writePage.photoA
-    } else {
-    imgUrlTextA = ''
-    }
-    if (this.props.statefunction.writePage.photoB) {
-      imgUrlTextB = this.props.statefunction.writePage.photoB
-    } else {
-      imgUrlTextB = ''
-    }
+    // let imgUrlTextA, imgUrlTextB
+    // if (this.props.statefunction.writePage.photoA) {
+    //   //path directory to A?
+    // // imgUrlTextA = this.props.statefunction.writePage.photoA
+    // } else {
+    // imgUrlTextA = ''
+    // }
+    // if (this.props.statefunction.writePage.photoB) {
+    //   // imgUrlTextB = this.props.statefunction.writePage.photoB
+    // } else {
+    //   imgUrlTextB = ''
+    // }
 
 
     return (
     <div>
       <div className="grey-text">
          <Button
-           style={{float:"right"}}
            onClick={this.handleWrite}
          >
            Write
          </Button>
-         <MDBInput 
+         <MDBInput
            hint="Title"
            outline
            size="lg"
            name='title'
            onChange={this.handleInputChange}
          />
-         <MDBInput 
+         <MDBInput
            hint="Main Topic"
            outline
            size="lg"
            name='mainTopic'
            onChange={this.handleInputChange}
-         /> 
-        
-         <MDBInput 
+         />
+
+         <MDBInput
            type ="textarea"
            hint="Summary"
            outline
@@ -148,36 +148,36 @@ export class YesNoRegisterForm extends Component {
            name='Summary'
            icon = "pencil-alt"
            onChange={this.handleInputChange}
-         />   
-         <MDBInput 
+         />
+         <MDBInput
            type ="number"
            hint="Time Limit"
            outline
            name='timeLimit'
            disabled
            onChange={this.handleInputChange}
-         /> 
-         <MDBInput 
+         />
+         <MDBInput
            type ="number"
            hint="Total Time Limit"
            outline
            name='totalTimeLimit'
            onChange={this.handleInputChange}
-         /> 
-         <MDBInput 
+         />
+         <MDBInput
            type ="number"
            hint="Word Limit"
            outline
            name='wordLimit'
            disabled
            onChange={this.handleInputChange}
-         /> 
-         <MDBInput 
+         />
+         <MDBInput
            hint="Candidate A"
            outline
            name='candidateA'
            onChange={this.handleInputChange}
-         /> 
+         />
             <div className="photoA">
               <div className="photoA">
                 <span className="photoA" id="photoA">
@@ -197,20 +197,20 @@ export class YesNoRegisterForm extends Component {
             </div>
           </div>
 
-         <MDBInput 
+         <MDBInput
            type ="textarea"
            hint="Text Description on A"
            outline
            name='textA'
            onChange={this.handleInputChange}
-         /> 
+         />
 
-         <MDBInput 
+         <MDBInput
            hint="Candidate B"
            outline
            name='candidateB'
            onChange={this.handleInputChange}
-         /> 
+         />
 
           <div className="photoB">
               <div className="photoB">
@@ -232,19 +232,19 @@ export class YesNoRegisterForm extends Component {
           </div>
 
 
-         <MDBInput 
+         <MDBInput
            type ="textarea"
            hint="Text Description on B"
            outline
            name='textB'
            onChange={this.handleInputChange}
-         /> 
-         
+         />
+
           <div> I hereby Agree that.... </div>
           <MDBInput label="Filled-in unchecked" checked type="checkbox" id="checkbox2" />
 
 `       </div>
-       
+
      </div>
     )
   }

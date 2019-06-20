@@ -43,7 +43,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardHeader, MDBCard
 import { Button, Form, Header } from 'semantic-ui-react'
 
 function Comment(props) {
-  const { user, content, createdTime } = props.comment;
+  const { username, content, createdTime } = props.comment;
 
   return (
     <div className="media mb-3">
@@ -51,13 +51,13 @@ function Comment(props) {
         className="mr-3 bg-light rounded"
         width="48"
         height="48"
-        src={`https://api.adorable.io/avatars/48/${user}@adorable.io.png`}
-        alt={user}
+        src={`https://api.adorable.io/avatars/48/${username}@adorable.io.png`}
+        alt={username}
       />
 
       <div className="media-body p-2 shadow-sm rounded bg-light border">
         <small className="float-right text-muted">{new Date(createdTime).toLocaleString()}</small>
-        <h6 className="mt-0 mb-1 text-muted">{user}</h6>
+        <h6 className="mt-0 mb-1 text-muted">{username}</h6>
         {content}
       </div>
     </div>
@@ -126,7 +126,7 @@ class CommentForm extends Component {
     let { comment } = this.state;
 
     console.log(comment)
-
+    console.log(userData.username)
     fetch("http://localhost:8000/yesorno/comment/", {
       method: "post",
       headers: {
@@ -135,7 +135,8 @@ class CommentForm extends Component {
       },
       body: JSON.stringify({
            'post' : this.props.yesnoId,
-           'user' : userData.username,
+           'user' : 1,
+           'username' : userData.username,
            'content' : this.state.comment.message,
            'createdTime' : Date.now()
       })
@@ -149,7 +150,7 @@ class CommentForm extends Component {
           comment.time = new Date(res.createdTime).toLocaleString();
 
           let addedComment = {
-            user: res.user,
+            user: res.username,
             id: res.id,
             createdTime: res.createdTime,
             content: res.content
@@ -281,7 +282,7 @@ class YesNoDetailPage extends Component {
    .then(res => res.filter(data => data.post == params.yesnoId))
    .then(res => this.setState({comments: res.reverse()}))
 
-   console.log(this.state)
+
   }
 
   addComment(comment) {

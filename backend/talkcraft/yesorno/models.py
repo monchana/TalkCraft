@@ -46,6 +46,7 @@ class UserComment(models.Model):
     objects = models.Manager()
     post = models.ForeignKey(YesOrNo, related_name='comments', on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    username = models.CharField(blank=True, default='', max_length=100)
     createdTime = models.DateTimeField(auto_now_add=True)
     content = models.CharField(max_length = 200, blank=True, default='')
 #    id = models.AutoField(primary_key=True)

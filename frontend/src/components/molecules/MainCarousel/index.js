@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Carousel } from 'react-bootstrap'
+import './12.png'
+import { Link } from 'components'
 
 class MainCarousel extends Component {
   constructor(props, context) {
@@ -22,7 +24,7 @@ class MainCarousel extends Component {
 
   render() {
     const { index, direction } = this.state;
-
+    const png = require(`!raw-loader!./${12}.png`)
     return (
       <Carousel
         activeIndex={index}
@@ -30,15 +32,17 @@ class MainCarousel extends Component {
         onSelect={this.handleSelect}
       >
         <Carousel.Item>
+        <Link href="/yesno-detail/1" style={{fontFamily:"Geogia", color:"black"}}>
+
           <img
-            className="d-block w-100"
-            src="http://placehold.it/1000x400/"
+            className="d-block w-100 h-50"
+src="https://t1.daumcdn.net/cfile/tistory/262E4E4855924DBB24"
             alt="First slide"
-          />
+            href="/yesno-detail/1"
+           />
+           </Link>
 
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Place holder image</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>

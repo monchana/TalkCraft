@@ -12,7 +12,7 @@ class UserCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserComment
         ordering = ['-id']
-        fields = ('id', 'user', 'createdTime', 'content', 'post')
+        fields = ('id', 'user', 'createdTime', 'content', 'post', 'username',)
         
 #Cast through hyperlinkedModelserializer or ModelSerializer  
 class YesOrNoSerializer(serializers.ModelSerializer):
