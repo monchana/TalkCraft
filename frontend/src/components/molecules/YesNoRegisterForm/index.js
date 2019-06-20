@@ -22,29 +22,30 @@ export class YesNoRegisterForm extends Component {
       author: '', 
       mainTopic: '',
       summary: '',
-      timeLimit: '',
-      totalTimeLimit: '', 
-      wordLimit: '',
+      timeLimit: null,
+      totalTimeLimit: null, 
+      wordLimit: null,
       candidateA: '',
       textA: '', 
       photoA: null, 
       candidateB: '',
       textB: '', 
-      photoB: null, 
-      openStatus: false
+      photoB: null
     }
     this.upload22 = React.createRef();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   category = {
     options : [
       "음식", "운동", "연애", "학업"
     ]
   }
+  /*
   handleSubmit = event => {
     event.preventDefault()
     const { username, password } = this.state
     this.props.fetchLogin(username, password)
-  }
+  }*/
 /*
   _handleSubmit = e => {
     e.preventDefault();
@@ -66,7 +67,27 @@ export class YesNoRegisterForm extends Component {
     }
   }
 
-  handleWrite = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onCreate(this.state);
+    this.setState({
+        author: '',
+        title: '',
+        mainTopic: '',
+        summary: '',
+        timelimit: null,
+        totalTimeLimit: null,
+        wordLimit: null,
+        candidateA : '',
+        textA: '',
+        photoA: null,
+        candidateB : '',
+        textB: '',
+        photoB: null
+    })
+  }
+  handleWrite = (e) => {
+    e.preventDefault();
     const {postId, author, title, mainTopic, summary, timeLimit, totalTimeLimit,
       wordLimit, candidateA, textA, photoA, candidateB, textB, photoB} = this.state
     // const user = JSON.parse(localStorage.getItem('user')).username
@@ -222,8 +243,7 @@ export class YesNoRegisterForm extends Component {
           <div> I hereby Agree that.... </div>
           <MDBInput label="Filled-in unchecked" checked type="checkbox" id="checkbox2" />
 
-         
-       </div>
+`       </div>
        
      </div>
     )

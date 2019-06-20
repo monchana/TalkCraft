@@ -132,9 +132,11 @@ class Overall extends React.Component {
           timelimit: '',
           totalTimeLimit: '',
           wordLimit: '',
-          descriptionA: '',
+          candidateA : '',
+          textA: '',
           photoA: null,
-          descriptionB: '',
+          candidateB : '',
+          textB: '',
           photoB: null
       })
     }

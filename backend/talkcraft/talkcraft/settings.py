@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'login.apps.LoginConfig',
     'corsheaders',
     'yesorno',
+    'debate',
 ]
 
 # To utilize custom user model
