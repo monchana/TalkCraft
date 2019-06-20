@@ -1,17 +1,17 @@
 //Need to change initialState : it might require another state
 
-export const initialState = Map({
-    postId: null, 
-    author: '', 
-    title: '', 
+export const initialState = {
+    postId: null,
+    author: '',
+    title: '',
     mainTopic: '',
     summary: '',
     timeLimit: '',
-    totalTimeLimit: '', 
+    totalTimeLimit: '',
     wordLimit: '',
-    textA: '', 
-    photoA: null, 
-    textB: '', 
-    photoB: null, 
+    textA: '',
+    photoA: null,
+    textB: '',
+    photoB: null,
     openStatus: false
-});
+}

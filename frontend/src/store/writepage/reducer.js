@@ -33,7 +33,7 @@ const writePageReducer = (state = initialState, writePageActions) => {
 
     case writePageActions.WRITE_FAIL:
       return next
-    
+
     //post page, return next status
     case writePageActions.WRITE_REQUEST:
       return next
@@ -41,7 +41,7 @@ const writePageReducer = (state = initialState, writePageActions) => {
     case writePageActions.GET_DETAIL:
       state.postId = writePageActions.postId
       return next
-    
+
     case writePageActions.GET_DETAIL_FAIL:
       return next
 

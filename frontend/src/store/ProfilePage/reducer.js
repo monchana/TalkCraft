@@ -3,7 +3,7 @@ import {
 
     PROFILE__REQUESTED__SUCCEEDED
 
-} from '../actionTypes';
+} from './actionTypes';
 
 /*
         name="Maryam"
