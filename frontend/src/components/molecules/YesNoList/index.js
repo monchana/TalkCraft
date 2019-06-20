@@ -111,8 +111,7 @@ class YesNoList extends React.Component {
           : <Link href={"/yesno-detail/" + item.id} key={item.title}>
               <h5>{item.title}</h5>
                {item.summary}
-              <br/>
-               votes count 0
+              
              </Link>}
             </div>
            ,

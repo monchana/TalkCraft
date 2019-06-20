@@ -119,15 +119,26 @@ class CommentForm extends Component {
 
     // persist the comments on server
     let userData = JSON.parse(localStorage.getItem('user'))
+    // this.setState({ comment: {...this.state.comment, username:userData.username}})
+    // console.log(this.state)
 
+    // body: JSON.stringify(comment)
     let { comment } = this.state;
+
+    console.log(comment)
+
     fetch("http://localhost:8000/yesorno/comment/", {
       method: "post",
       headers: {
           'Authorization' : userData.token,
           'Content-Type': 'application/json',
       },
-      body: JSON.stringify(comment)
+      body: JSON.stringify({
+           'post' : this.props.yesnoId,
+           'user' : userData.username,
+           'content' : this.state.comment.message,
+           'createdTime' : Date.now()
+      })
     })
       .then(res => res.json())
       .then(res => {
@@ -135,9 +146,23 @@ class CommentForm extends Component {
           this.setState({ loading: false, error: res.error });
         } else {
           // add time return from api and push comment to parent state
-          comment.time = res.time;
-          this.props.addComment(comment);
+          comment.time = new Date(res.createdTime).toLocaleString();
 
+          let addedComment = {
+            user: res.user,
+            id: res.id,
+            createdTime: res.createdTime,
+            content: res.content
+          }
+
+          this.props.addComment(addedComment);
+console.log(res)
+//  {id: 11, user: 1, createdTime: "2019-06-20T06:31:24.330790+09:00", content: "d", post: null}
+// content: "d"
+// createdTime: "2019-06-20T06:31:24.330790+09:00"
+// id: 11
+// post: null
+// user: 1
           // clear the message box
           this.setState({
             loading: false,
@@ -236,7 +261,8 @@ class YesNoDetailPage extends Component {
     this.state = {
       data: [],
       loading: true,
-      comments: []
+      comments: [],
+      yesnoId: null
     }
 
     this.addComment = this.addComment.bind(this);
@@ -244,14 +270,18 @@ class YesNoDetailPage extends Component {
   }
   componentDidMount() {
   const { match: { params } } = this.props;
+  this.setState({ yesnoId: params.yesnoId })
 
   fetch('http://localhost:8000/yesorno/detail/' + params.yesnoId + '/')
   .then(response => response.json())
   .then(data => this.setState({data: data, loading: false}))
 
- fetch("http://localhost:8000/yesorno/comment/" + params.yesnoId + '/')
+ fetch("http://localhost:8000/yesorno/comment/")
    .then(res => res.json())
-   .then(res => this.setState({comments: [res, ...this.state.comments]}))
+   .then(res => res.filter(data => data.post == params.yesnoId))
+   .then(res => this.setState({comments: res.reverse()}))
+
+   console.log(this.state)
   }
 
   addComment(comment) {
@@ -259,6 +289,8 @@ class YesNoDetailPage extends Component {
       loading: false,
       comments: [comment, ...this.state.comments]
     });
+
+    console.log(this.state.comments)
   }
 
   render(){
@@ -290,7 +322,7 @@ class YesNoDetailPage extends Component {
                   <MDBCardText>
                   </MDBCardText>
                 </MDBCardBody>
-              <MDBCardFooter color="success-color">46%</MDBCardFooter>
+              <MDBCardFooter color="success-color">%</MDBCardFooter>
           </MDBCard>
         </MDBCol>
         <MDBCol className="ustify-content-center">
@@ -304,7 +336,7 @@ class YesNoDetailPage extends Component {
               <MDBCardText>
               </MDBCardText>
             </MDBCardBody>
-            <MDBCardFooter color="danger-color">54%</MDBCardFooter>
+            <MDBCardFooter color="danger-color">%</MDBCardFooter>
           </MDBCard>
         </MDBCol>
        </MDBRow>
@@ -323,7 +355,7 @@ class YesNoDetailPage extends Component {
         </header>
       <div className="row">
         <div className="col-4  pt-3 border-right">
-            <CommentForm addComment={this.addComment} />
+            <CommentForm addComment={this.addComment} yesnoId={this.state.yesnoId}/>
         </div>
         <div className="col-8  pt-3 bg-white">
           <CommentList
