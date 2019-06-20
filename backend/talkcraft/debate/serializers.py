@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from debate.models import Debate, UserComment
+from debate.models import Debate, DebateUserComment
 from login.serializers import UserSerializer
 
 
@@ -8,9 +8,9 @@ from login.serializers import UserSerializer
 
 #TODO : Need to set up detail and main page
 
-class UserCommentSerializer(serializers.ModelSerializer):
+class DebateUserCommentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserComment
+        model = DebateUserComment
         ordering = ['-id']
         fields = ('id', 'user', 'createdTime', 'content', 'post')
         

@@ -9,8 +9,8 @@ urlpatterns = [
     path('write/', views.DebateWrite.as_view()),
     path('detail/<int:pk>/', views.DebateDetail.as_view()),
     path('test/', views.test),
-    path('comment/', views.UserCommentWrite.as_view()),
-    path('comment/<int:pk>/', views.UserCommentDetail.as_view()),
+    path('comment/', views.DebateUserCommentWrite.as_view()),
+    path('comment/<int:pk>/', views.DebateUserCommentDetail.as_view()),
 ]
 
 urlpatterns=format_suffix_patterns(urlpatterns)

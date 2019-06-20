@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from login.serializers import UserSerializerWithToken
 from django.template import Context
 from django.template.loader import get_template
-from debate.models import Debate, UserComment
-from debate.serializers import DebateSerializer, UserCommentSerializer
+from debate.models import Debate, DebateUserComment
+from debate.serializers import DebateSerializer, DebateUserCommentSerializer
 from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
@@ -55,28 +55,28 @@ class DebateWrite(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-class UserCommentDetail(generics.RetrieveUpdateDestroyAPIView):
+class DebateUserCommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (
             permissions.IsAuthenticatedOrReadOnly,
             #IsOwnerOrReadOnly
     )
-    queryset = UserComment.objects.all()
-    serializer_class = UserCommentSerializer
+    queryset = DebateUserComment.objects.all()
+    serializer_class = DebateUserCommentSerializer
     def get(self, request, *args, **kwargs):
         comment= self.queryset.get(id = kwargs['pk'])
 
-        serializer = UserCommentSerializer(comment)
+        serializer = DebateUserCommentSerializer(comment)
         return Response(serializer.data)
 
 
-class UserCommentWrite(generics.ListCreateAPIView):
-    queryset = UserComment.objects.all()
+class DebateUserCommentWrite(generics.ListCreateAPIView):
+    queryset = DebateUserComment.objects.all()
     permission_classes = (
         permissions.AllowAny,
        # IsOwnerOrReadOnly
     )
 
-    serializer_class = UserCommentSerializer
+    serializer_class = DebateUserCommentSerializer
 
     def perfrom_create(self, serializer):
         serializer.save(user=self.request.user)

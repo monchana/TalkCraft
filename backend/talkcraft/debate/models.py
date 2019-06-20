@@ -43,7 +43,7 @@ class Debate(models.Model):
 # Need to do few more saving
 
 
-class UserComment(models.Model):
+class DebateUserComment(models.Model):
     objects = models.Manager()
     post = models.ForeignKey(Debate, related_name='comments', on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
