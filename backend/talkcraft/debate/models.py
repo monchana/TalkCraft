@@ -13,8 +13,8 @@ class Debate(models.Model):
 
     candidateA = models.CharField(max_length=30, blank=True, default='')
     candidate = models.CharField(max_length=30, blank=True, default='')
-    textDescriptionA = models.TextField()
-    textDescriptionB = models.TextField()
+    textA = models.TextField()
+    textB = models.TextField()
     # Need to set max and min Value
     wordLimit = models.IntegerField(default=150)
     # Need to set max and min value

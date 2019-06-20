@@ -24,7 +24,7 @@ class DebateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Debate
         fields = ('id', 'created', 'author', 'title', 'mainTopic', 
-                    'startTime', 'summary', 'candidateA', 'candidateB', 'textDescriptionA', 
-                  'textDescriptionB', 'wordLimit', 'totalTimeLimit', 'pictureA', 
+                    'startTime', 'summary', 'candidateA', 'candidateB', 'textA', 
+                  'textB', 'wordLimit', 'totalTimeLimit', 'pictureA', 
                   'pictureB', 'openStatus', 'comments') 
     
